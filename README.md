@@ -13,4 +13,4 @@
 在根目录下运行 ``./gradlew bootJar`` 即可，生成的可执行文件在 ``/build/libs/`` 下。
 
 ### 启动服务
-``nohup java -jar -Dspring.profiles.active=prod yeah-0.0.1-SNAPSHOT.jar YeahApplication.class &``
+``nohup java -jar -Dspring.profiles.active=prod randeng-0.0.1-SNAPSHOT.jar RDApplication.class &``

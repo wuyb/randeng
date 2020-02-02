@@ -9,9 +9,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 @EnableScheduling
-public class YeahApplication {
+public class RDApplication {
 
-	public class YeahMvcConfigurer implements WebMvcConfigurer {
+	public class RDMvcConfigurer implements WebMvcConfigurer {
 		@Override
 		public void addCorsMappings(CorsRegistry registry) {
 			registry.addMapping("/**").allowedOrigins("*").allowedMethods("PUT", "POST", "DELETE", "GET");
@@ -20,10 +20,10 @@ public class YeahApplication {
 
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
-		return new YeahMvcConfigurer();
+		return new RDMvcConfigurer();
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(YeahApplication.class, args);
+		SpringApplication.run(RDApplication.class, args);
 	}
 }

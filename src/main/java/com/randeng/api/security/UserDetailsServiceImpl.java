@@ -25,7 +25,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new UsernameNotFoundException("Username is not found.");
         }
         YeahUserDetails userDetails = new YeahUserDetails();
-        userDetails.setUsername(user.getMobile());
+        userDetails.setUsername(user.getUsername());
         userDetails.setPassword(user.getPassword());
         return userDetails;
     }

@@ -36,7 +36,7 @@ public class TokenUtils {
      */
     public String generateToken(User user) {
         Map<String, Object> claims = new HashMap<String, Object>();
-        claims.put("sub", user.getMobile());
+        claims.put("sub", user.getUsername());
         claims.put("userId", user.getId());
         claims.put("created", new Date(System.currentTimeMillis()));
         return this.generateToken(claims);

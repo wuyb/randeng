@@ -64,7 +64,7 @@ public class UserController extends BaseController {
         }
 
         user = new User();
-        user.setMobile(request.getMobile());
+        user.setUsername(request.getMobile());
         user.setName(request.getName());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         userService.save(user);
@@ -104,7 +104,7 @@ public class UserController extends BaseController {
             return ResponseEntity.badRequest().build();
         }
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-            user.getMobile(),
+            user.getUsername(),
             request.getOriginalPassword()
         ));
         user.setPassword(passwordEncoder.encode(request.getNewPassword()));

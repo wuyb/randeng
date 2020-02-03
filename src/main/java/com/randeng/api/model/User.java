@@ -4,11 +4,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import java.util.List;
 
 /**
- * The user entity represents a business owner who has access to the system.
+ * The user entity represents a user-end user who has access to the system through wechat.
  */
 @Entity
 @Table(name = "user")
@@ -18,9 +22,9 @@ public class User extends BaseEntity<Long> {
     private static final long serialVersionUID = -3497825743077481879L;
 
     /**
-     * The mobile number for the user. This is also the login username.
+     * The username used for login.
      */
-    private String mobile;
+    private String username;
 
     /**
      * The hashed password.
@@ -32,13 +36,18 @@ public class User extends BaseEntity<Long> {
      */
     private String name;
 
+    /**
+     * The roles of the user.
+     */
+    private List<Role> roles;
+
     @Column(nullable = false)
-    public String getMobile() {
-        return mobile;
+    public String getUsername() {
+        return username;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Column(nullable = false)
@@ -58,5 +67,19 @@ public class User extends BaseEntity<Long> {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
+    )
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }

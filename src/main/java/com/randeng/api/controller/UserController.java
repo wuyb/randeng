@@ -49,8 +49,8 @@ public class UserController extends BaseController {
      */
     @RequestMapping(value = "register", method = RequestMethod.POST)
     public @ResponseBody ResponseEntity<?> register(@RequestBody RegisterRequest request) {
-        if (StringUtils.isEmpty(request.getMobile())) {
-            return ResponseEntity.badRequest().body(WebResponse.error("The mobile number is required for registration.", ErrorCode.REGISTER_MOBILE_NOT_PROVIDED));
+        if (StringUtils.isEmpty(request.getUsername())) {
+            return ResponseEntity.badRequest().body(WebResponse.error("The username is required for registration.", ErrorCode.REGISTER_MOBILE_NOT_PROVIDED));
         }
         if (StringUtils.isEmpty(request.getName())) {
             return ResponseEntity.badRequest().body(WebResponse.error("The name is required for registration.", ErrorCode.REGISTER_NAME_NOT_PROVIDED));
@@ -58,13 +58,13 @@ public class UserController extends BaseController {
         if (StringUtils.isEmpty(request.getPassword())) {
             return ResponseEntity.badRequest().body(WebResponse.error("The password is required for registration.", ErrorCode.REGISTER_PASSWORD_NOT_PROVIDED));
         }
-        User user = userService.findByMobile(request.getMobile());
+        User user = userService.findByUsername(request.getUsername());
         if (user != null) {
             return ResponseEntity.badRequest().body(WebResponse.error("The mobile has been used by an existing user.", ErrorCode.REGISTER_MOBILE_USED));
         }
 
         user = new User();
-        user.setUsername(request.getMobile());
+        user.setUsername(request.getUsername());
         user.setName(request.getName());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         userService.save(user);
@@ -81,11 +81,11 @@ public class UserController extends BaseController {
     public @ResponseBody
     ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                loginRequest.getMobile(),
+                loginRequest.getUsername(),
                 loginRequest.getPassword()
         ));
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        User user = userService.findByMobile(loginRequest.getMobile());
+        User user = userService.findByUsername(loginRequest.getUsername());
         String jwtToken = tokenUtils.generateToken(user);
         LoginResponse response = new LoginResponse();
         response.setToken(jwtToken);

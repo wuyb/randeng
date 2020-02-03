@@ -12,7 +12,7 @@ public class RegisterRequest implements Serializable {
     /**
      * The mobile number.
      */
-    private String mobile;
+    private String username;
 
     /**
      * User's name.
@@ -24,12 +24,12 @@ public class RegisterRequest implements Serializable {
      */
     private String password;
 
-    public String getMobile() {
-        return mobile;
+    public String getUsername() {
+        return username;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getName() {

@@ -1,6 +1,7 @@
 package com.randeng.api.controller.common;
 
 import com.randeng.api.model.User;
+import com.randeng.api.service.RoleService;
 import com.randeng.api.service.UserService;
 import org.springframework.security.core.context.SecurityContextHolder;
 
@@ -16,6 +17,6 @@ public abstract class BaseController {
             return null;
         }
         String username = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return userService.findByMobile(username);
+        return userService.findByUsername(username);
     }
 }

@@ -18,15 +18,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.LockModeType;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Fetch;
-import javax.persistence.criteria.From;
-import javax.persistence.criteria.Join;
-import javax.persistence.criteria.Path;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-import javax.persistence.criteria.Selection;
+import javax.persistence.criteria.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -418,7 +410,7 @@ public abstract class BaseDaoImpl<T extends BaseEntity<ID>, ID extends Serializa
     }
 
     @SuppressWarnings("unchecked")
-    private Predicate toPredicate(Root<T> root, List<Filter> filters) {
+    protected Predicate toPredicate(Root<T> root, List<Filter> filters) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         Predicate restrictions = criteriaBuilder.conjunction();
         if (root == null || CollectionUtils.isEmpty(filters)) {

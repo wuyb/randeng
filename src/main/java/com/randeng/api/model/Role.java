@@ -1,5 +1,7 @@
 package com.randeng.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
@@ -46,6 +48,7 @@ public class Role extends BaseEntity<Long> {
     }
 
     @ManyToMany(mappedBy = "roles", targetEntity = User.class)
+    @JsonIgnore
     public List<User> getUsers() {
         return users;
     }

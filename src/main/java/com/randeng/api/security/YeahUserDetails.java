@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * This entity is an implementation of the Spring Security <code>UserDetails</code> interface.
@@ -43,9 +44,15 @@ public class YeahUserDetails implements UserDetails {
      */
     private Boolean isEnabled = true;
 
+    private List<String> roles = new ArrayList<>();
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return new ArrayList<>();
+        ArrayList<GrantedAuthority> authorities = new ArrayList<>();
+        for (String role : roles) {
+            authorities.add((GrantedAuthority) () -> "ROLE_" + role);
+        }
+        return authorities;
     }
 
     @Override
@@ -100,5 +107,13 @@ public class YeahUserDetails implements UserDetails {
 
     public void setEnabled(Boolean enabled) {
         isEnabled = enabled;
+    }
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
     }
 }

@@ -1,5 +1,7 @@
 package com.randeng.api.service;
 
+import com.randeng.api.common.Page;
+import com.randeng.api.common.Pageable;
 import com.randeng.api.model.User;
 
 /**
@@ -7,9 +9,17 @@ import com.randeng.api.model.User;
  */
 public interface UserService extends BaseService<User, Long> {
     /**
-     * Finds user by mobile number.
-     * @param mobile the mobile number
+     * Finds user by username.
+     * @param username the username
      * @return the user, if not found, null shall be returned
      */
-    User findByMobile(String mobile);
+    User findByUsername(String username);
+
+    /**
+     * Finds users by role.
+     * @param roleName the name of the role
+     * @param pageable the pageable request includes page number and size
+     * @return a page object
+     */
+    Page<User> findByRole(String roleName, Pageable pageable);
 }

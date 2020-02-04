@@ -8,6 +8,7 @@ import com.randeng.api.controller.common.ErrorCode;
 import com.randeng.api.controller.common.WebResponse;
 import com.randeng.api.model.Fundraising;
 import com.randeng.api.model.Hospital;
+import com.randeng.api.model.Inventory;
 import com.randeng.api.service.FundraisingService;
 import com.randeng.api.service.HospitalService;
 import com.randeng.tools.DateUtils;
@@ -196,4 +197,19 @@ public class FundraisingController extends BaseController {
         fundraisingService.update(fundraising);
         return ResponseEntity.ok(WebResponse.success(true));
     }
+
+    @RequestMapping(value = "{id}/inventory", method = RequestMethod.POST)
+    @Secured({"ROLE_admin", "ROLE_operator"})
+    public @ResponseBody
+    ResponseEntity<?> inventory(@PathVariable Long id, @RequestBody Inventory inventory) {
+        Fundraising fundraising = fundraisingService.find(id);
+        if (fundraising == null) {
+            return ResponseEntity.notFound().build();
+        }
+        inventory.setFundraising(fundraising);
+        fundraising.setInventory(inventory);
+        fundraisingService.update(fundraising);
+        return ResponseEntity.ok(WebResponse.success(true));
+    }
+
 }

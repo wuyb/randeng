@@ -37,6 +37,8 @@ public class Fundraising extends BaseEntity<Long> {
     private Date endTime;
     private FundRaisingStatus status;
 
+    private Inventory inventory;
+
     @Column(nullable = false)
     public String getName() {
         return name;
@@ -170,5 +172,15 @@ public class Fundraising extends BaseEntity<Long> {
 
     public void setStatus(FundRaisingStatus status) {
         this.status = status;
+    }
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "inventory_id")
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
     }
 }

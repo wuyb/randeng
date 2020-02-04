@@ -820,6 +820,45 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "inventory",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"fieldPhotos\": [\"http://a\", \"http://b\"],\n  \"inventoryDate\": \"2020-02-05 00:00:00\"\n}"
+								},
+								"url": {
+									"raw": "{{host}}/admin/fundraising/1/inventory",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"fundraising",
+										"1",
+										"inventory"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"_postman_isSubFolder": true

@@ -31,6 +31,11 @@ public class User extends BaseEntity<Long> {
     private String name;
 
     /**
+     * The mobile number for the user.
+     */
+    private String mobile;
+
+    /**
      * The roles of the user.
      */
     private List<Role> roles;
@@ -75,5 +80,14 @@ public class User extends BaseEntity<Long> {
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    @Column
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 }

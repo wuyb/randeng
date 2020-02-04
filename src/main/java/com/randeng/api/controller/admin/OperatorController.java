@@ -61,6 +61,7 @@ public class OperatorController extends BaseController {
         user.setName(request.getName());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setRoles(Arrays.asList(operatorRole));
+        user.setMobile(request.getMobile());
         userService.save(user);
 
         return ResponseEntity.ok(WebResponse.success(true));
@@ -72,4 +73,49 @@ public class OperatorController extends BaseController {
     ResponseEntity<?> list(@RequestParam(required = false, defaultValue = "1") Integer pageNumber, @RequestParam(required = false, defaultValue = "10") Integer pageSize) {
         Page<User> users = userService.findByRole("operator", new Pageable(pageNumber, pageSize));
         return ResponseEntity.ok(WebResponse.success(users));
-    }}
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    @Secured("ROLE_admin")
+    public @ResponseBody
+    ResponseEntity<?> get(@PathVariable Long id) {
+        return ResponseEntity.ok(WebResponse.success(userService.find(id)));
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.PUT)
+    @Secured("ROLE_admin")
+    public @ResponseBody
+    ResponseEntity<?> update(@PathVariable Long id, @RequestBody RegisterRequest request) {
+        User user = userService.find(id);
+        if (request.getName() != null) {
+            user.setName(request.getName());
+        }
+        if (request.getPassword() != null) {
+            user.setPassword(passwordEncoder.encode(request.getPassword()));
+        }
+        if (request.getMobile() != null) {
+            user.setMobile(request.getMobile());
+        }
+        userService.update(user);
+        return ResponseEntity.ok(WebResponse.success(true));
+    }
+
+    @RequestMapping(value = "{id}/disable", method = RequestMethod.PUT)
+    @Secured("ROLE_admin")
+    public @ResponseBody
+    ResponseEntity<?> disable(@PathVariable Long id) {
+        User user = userService.find(id);
+        userService.delete(user);
+        return ResponseEntity.ok(WebResponse.success(true));
+    }
+
+    @RequestMapping(value = "{id}/enable", method = RequestMethod.PUT)
+    @Secured("ROLE_admin")
+    public @ResponseBody
+    ResponseEntity<?> enable(@PathVariable Long id) {
+        User user = userService.find(id);
+        user.setDeleted(false);
+        userService.update(user);
+        return ResponseEntity.ok(WebResponse.success(true));
+    }
+}

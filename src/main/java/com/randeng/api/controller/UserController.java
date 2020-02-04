@@ -66,6 +66,7 @@ public class UserController extends BaseController {
         user = new User();
         user.setUsername(request.getUsername());
         user.setName(request.getName());
+        user.setMobile(request.getMobile());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         userService.save(user);
 

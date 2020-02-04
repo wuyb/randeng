@@ -24,6 +24,11 @@ public class RegisterRequest implements Serializable {
      */
     private String password;
 
+    /**
+     * The mobile number.
+     */
+    private String mobile;
+
     public String getUsername() {
         return username;
     }
@@ -48,4 +53,11 @@ public class RegisterRequest implements Serializable {
         this.password = password;
     }
 
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
 }

@@ -6,7 +6,14 @@ import java.util.Calendar;
 import java.util.Date;
 
 public final class DateUtils {
+
+    private static final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
     private DateUtils() {
+    }
+
+    public static String format(Date date) {
+        return format.format(date);
     }
 
     public static Date startOfDay(Date day) {
@@ -104,6 +111,7 @@ public final class DateUtils {
         System.out.println(weekday(format.parse("2018-11-11")));
 //        System.out.println(endOfMonth(format.parse("2018-08-31")));
 //        System.out.println(new Date(endOfMonth(format.parse("2018-08-31")).getTime() + 1000));
+        System.out.println(DateUtils.format.parse("2020-02-01 00:00:00").getTime());
     }
 
 }

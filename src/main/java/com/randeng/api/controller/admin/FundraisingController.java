@@ -10,7 +10,9 @@ import com.randeng.api.model.Fundraising;
 import com.randeng.api.model.Hospital;
 import com.randeng.api.service.FundraisingService;
 import com.randeng.api.service.HospitalService;
+import com.randeng.tools.DateUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @Controller("fundraisingController")
@@ -88,10 +91,18 @@ public class FundraisingController extends BaseController {
                            @RequestParam(required = false) Long hospitalId,
                            @RequestParam(required = false) Long province,
                            @RequestParam(required = false) Long city,
-                           @RequestParam(required = false) Long region) {
+                           @RequestParam(required = false) Long region,
+                           @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date startTime,
+                           @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date endTime) {
         Pageable pageable = new Pageable(pageNumber, pageSize);
         if (status != null) {
             pageable.getFilters().add(new Filter("status", Filter.Operator.eq, status));
+        }
+        if (startTime != null) {
+            pageable.getFilters().add(new Filter("endTime", Filter.Operator.ge, DateUtils.startOfDay(startTime)));
+        }
+        if (endTime != null) {
+            pageable.getFilters().add(new Filter("endTime", Filter.Operator.le, DateUtils.endOfDay(endTime)));
         }
         // if hospital is specified, ignore province/city/region restrictions
         if (hospitalId != null) {

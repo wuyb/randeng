@@ -690,6 +690,49 @@
 							"response": []
 						},
 						{
+							"name": "get fundraisings by end time",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/admin/fundraising?startTime=2020-02-01",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"fundraising"
+									],
+									"query": [
+										{
+											"key": "startTime",
+											"value": "2020-02-01"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "get fundraisings by district",
 							"request": {
 								"auth": {
@@ -772,6 +815,243 @@
 									"path": [
 										"admin",
 										"fundraising",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "purchase",
+					"item": [
+						{
+							"name": "create purchase",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"fundraisings\": [{\"id\":1}],\n  \"purchaser\": \"test user\",\n  \"purchaseDate\": \"2020-02-05 00:00:00\",\n  \"amount\": \"1000\",\n  \"invoicePhotos\": [\"http://a\", \"http://b\"],\n  \"transferPhotos\": [\"http://c\", \"http://d\"],\n  \"fieldPhotos\": [\"http://e\", \"http://f\"]\n}"
+								},
+								"url": {
+									"raw": "{{host}}/admin/purchase",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"purchase"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update purchase status",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"status\": \"SHIPPED\"\n}"
+								},
+								"url": {
+									"raw": "{{host}}/admin/purchase/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"purchase",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update purchase photos",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"transferPhotos\": [\"http://single\"]\n}"
+								},
+								"url": {
+									"raw": "{{host}}/admin/purchase/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"purchase",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get purchases",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/admin/purchase",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"purchase"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get purchases by purchase date",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/admin/purchase?startTime=2020-02-01",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"purchase"
+									],
+									"query": [
+										{
+											"key": "startTime",
+											"value": "2020-02-01"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get purchase",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/admin/purchase/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"purchase",
 										"1"
 									]
 								}

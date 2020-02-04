@@ -10,7 +10,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "hospital")
-@SequenceGenerator(name = "sequenceGenerator", sequenceName = "seq_hospital")
+@SequenceGenerator(name = "sequenceGenerator", sequenceName = "seq_hospital", allocationSize = 1)
 public class Hospital extends BaseEntity<Long> {
 
     private String name;

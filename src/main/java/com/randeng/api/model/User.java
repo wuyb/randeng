@@ -10,7 +10,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "user")
-@SequenceGenerator(name = "sequenceGenerator", sequenceName = "seq_user")
+@SequenceGenerator(name = "sequenceGenerator", sequenceName = "seq_user", allocationSize = 1)
 public class User extends BaseEntity<Long> {
 
     private static final long serialVersionUID = -3497825743077481879L;

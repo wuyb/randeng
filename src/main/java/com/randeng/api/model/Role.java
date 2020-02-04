@@ -13,7 +13,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "role")
-@SequenceGenerator(name = "sequenceGenerator", sequenceName = "seq_role")
+@SequenceGenerator(name = "sequenceGenerator", sequenceName = "seq_role", allocationSize = 1)
 public class Role extends BaseEntity<Long> {
 
     /**

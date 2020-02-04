@@ -1,0 +1,851 @@
+{
+	"info": {
+		"_postman_id": "b8444280-621a-4a9c-a5eb-0e02c65f0185",
+		"name": "randeng-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "operator",
+					"item": [
+						{
+							"name": "get operators",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/admin/operator",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"operator"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get operator",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/admin/operator/102",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"operator",
+										"102"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "disable operator",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/admin/operator/102/disable",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"operator",
+										"102",
+										"disable"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "enable operator",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/admin/operator/102/enable",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"operator",
+										"102",
+										"enable"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create operator",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"wang1\",\n  \"password\": \"test\",\n  \"name\": \"wang\",\n  \"mobile\": \"13800000000\"\n}"
+								},
+								"url": {
+									"raw": "{{host}}/admin/operator",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"operator"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update operator",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"wangx\",\n  \"mobile\": \"13800000001\"\n}"
+								},
+								"url": {
+									"raw": "{{host}}/admin/operator/102",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"operator",
+										"102"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "hospital",
+					"item": [
+						{
+							"name": "create hospital",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"北京协和医院东院\",\n  \"provinceId\": \"2\",\n  \"cityId\": \"52\",\n  \"regionId\": \"500\",\n  \"address\": \"北京市东城区帅府园一号\",\n  \"contact\": \"刘大夫\",\n  \"introduction\": \"北京协和医院是北京协和医学院的临床学院。中国医学科学院的临床医学研究所,是卫生部指定的全国疑难重症诊治指导中心之一。\",\n  \"story\": \"北京协和医院是一所位于北京市东城区，集医疗、科研、教学为一体的大型综合医院。它隶属于中国协和医科大学(2006年改为北京协和医学院/清华大学医学部)，是其临床医学院，同时也是中国医学科学院的临床医学研究所，中华人民共和国卫生部指定的诊治疑难重症的技术指导中心。\",\n  \"photoUrl\": \"https://bkimg.cdn.bcebos.com/pic/0824ab18972bd4077b2d634675899e510eb309a6?x-bce-process=image/watermark,g_7,image_d2F0ZXIvYmFpa2UyMjA=,xp_5,yp_5\",\n  \"mobile\": \"13800000000\"\n}"
+								},
+								"url": {
+									"raw": "{{host}}/admin/hospital",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"hospital"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update hospital",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"北京协和医院东院\",\n  \"provinceId\": \"2\",\n  \"cityId\": \"52\",\n  \"regionId\": \"500\",\n  \"address\": \"北京市东城区帅府园一号\",\n  \"contact\": \"刘大夫\",\n  \"introduction\": \"北京协和医院是北京协和医学院的临床学院。中国医学科学院的临床医学研究所,是卫生部指定的全国疑难重症诊治指导中心之一。\",\n  \"story\": \"北京协和医院是一所位于北京市东城区，集医疗、科研、教学为一体的大型综合医院。它隶属于中国协和医科大学(2006年改为北京协和医学院/清华大学医学部)，是其临床医学院，同时也是中国医学科学院的临床医学研究所，中华人民共和国卫生部指定的诊治疑难重症的技术指导中心。\",\n  \"photoUrl\": \"https://bkimg.cdn.bcebos.com/pic/0824ab18972bd4077b2d634675899e510eb309a6?x-bce-process=image/watermark,g_7,image_d2F0ZXIvYmFpa2UyMjA=,xp_5,yp_5\",\n  \"mobile\": \"13800000001\"\n}"
+								},
+								"url": {
+									"raw": "{{host}}/admin/hospital/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"hospital",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get hospitals",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/admin/hospital",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"hospital"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get hospital",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/admin/hospital/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"hospital",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "disable hospital",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/admin/hospital/1/disable",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"hospital",
+										"1",
+										"disable"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "enable hospital",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/admin/hospital/1/enable",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"hospital",
+										"1",
+										"enable"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "fundraising",
+					"item": [
+						{
+							"name": "create fundraising",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"N95口罩\",\n  \"manufacturer\": \"3M\",\n  \"origin\": \"3M产地\",\n  \"brand\": \"3M\",\n  \"productPhotos\": [\"http://a\", \"http://b\"],\n  \"specification\": \"医用\",\n  \"location\": \"货物所在地\",\n  \"certificatePhotos\": [\"http://c\", \"http://d\"],\n  \"totalPrice\": \"1000\",\n  \"amount\": \"100\",\n  \"hospitals\": [{\"id\": \"1\"}, {\"id\": \"52\"}],\n  \"startTime\": \"2020-02-05 00:00:00\",\n  \"endTime\": \"2020-02-09 00:00:00\"\n}"
+								},
+								"url": {
+									"raw": "{{host}}/admin/fundraising",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"fundraising"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update fundraising status",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"status\": \"RAISING\"\n}"
+								},
+								"url": {
+									"raw": "{{host}}/admin/fundraising/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"fundraising",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update fundraising photos",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"productPhotos\": [\"http://single\"]\n}"
+								},
+								"url": {
+									"raw": "{{host}}/admin/fundraising/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"fundraising",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update fundraising hospitals",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"hospitals\": [{\"id\":\"1\"}]\n}"
+								},
+								"url": {
+									"raw": "{{host}}/admin/fundraising/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"fundraising",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get fundraisings",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/admin/fundraising?status=RAISING&hospitalId=1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"fundraising"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "RAISING"
+										},
+										{
+											"key": "hospitalId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get fundraisings by district",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/admin/fundraising?status=RAISING&city=52&region=501",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"fundraising"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "RAISING"
+										},
+										{
+											"key": "city",
+											"value": "52"
+										},
+										{
+											"key": "region",
+											"value": "501"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get fundraising",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/admin/fundraising/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"fundraising",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "register",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"test\",\n  \"password\": \"test\",\n  \"name\": \"test\"\n}"
+				},
+				"url": {
+					"raw": "{{host}}/user/register",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"test\",\n  \"password\": \"test\"\n}"
+				},
+				"url": {
+					"raw": "{{host}}/user/login",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

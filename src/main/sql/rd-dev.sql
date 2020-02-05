@@ -11,11 +11,63 @@
  Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 05/02/2020 15:02:48
+ Date: 05/02/2020 15:12:25
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for expense
+-- ----------------------------
+DROP TABLE IF EXISTS `expense`;
+CREATE TABLE `expense` (
+  `id` bigint(20) NOT NULL,
+  `create_date` datetime DEFAULT NULL,
+  `deleted` bit(1) DEFAULT NULL,
+  `update_date` datetime DEFAULT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `version` bigint(20) DEFAULT NULL,
+  `amount` decimal(19,2) NOT NULL,
+  `booking_date` datetime NOT NULL,
+  `expense_type` int(11) NOT NULL,
+  `operator_id` bigint(20) NOT NULL,
+  `serial_number` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `fundraising_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK6uxidtvx80x4mrprknx1wrd9` (`fundraising_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of expense
+-- ----------------------------
+BEGIN;
+INSERT INTO `expense` VALUES (1, '2020-02-05 15:10:22', b'0', '2020-02-05 15:10:22', 'd9adfdb4-571b-4668-b93d-a0b3258d2ea0', NULL, 1000.00, '2020-02-05 08:00:00', 0, 1, '11112222', NULL);
+INSERT INTO `expense` VALUES (2, '2020-02-05 15:11:31', b'0', '2020-02-05 15:11:31', '46523d2d-e009-40af-b320-c2061e5a8aca', NULL, 1000.00, '2020-02-05 08:00:00', 0, 1, '11112222', NULL);
+INSERT INTO `expense` VALUES (3, '2020-02-05 15:11:46', b'0', '2020-02-05 15:11:46', '4a3d82f9-e5c0-49bd-8164-4b1b7100ffd0', NULL, 1000.00, '2020-02-05 08:00:00', 0, 1, '11112222', 1);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for expense_photos
+-- ----------------------------
+DROP TABLE IF EXISTS `expense_photos`;
+CREATE TABLE `expense_photos` (
+  `expense_id` bigint(20) NOT NULL,
+  `photos` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  KEY `FKmv4ofo3ng13x7dxyoekdgd39e` (`expense_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of expense_photos
+-- ----------------------------
+BEGIN;
+INSERT INTO `expense_photos` VALUES (1, 'http://a');
+INSERT INTO `expense_photos` VALUES (1, 'http://b');
+INSERT INTO `expense_photos` VALUES (2, 'http://a');
+INSERT INTO `expense_photos` VALUES (2, 'http://b');
+INSERT INTO `expense_photos` VALUES (3, 'http://a');
+INSERT INTO `expense_photos` VALUES (3, 'http://b');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for fundraising
@@ -165,6 +217,7 @@ CREATE TABLE `income` (
 BEGIN;
 INSERT INTO `income` VALUES (3, '2020-02-05 15:00:21', b'0', '2020-02-05 15:00:21', 'af0d14cf-37f4-4dee-a446-c9d3c1021a43', NULL, 1000.00, '2020-02-05 08:00:00', 0, NULL, '11112222', 'Zhang', NULL, 1);
 INSERT INTO `income` VALUES (4, '2020-02-05 15:01:07', b'0', '2020-02-05 15:01:07', 'c77107ff-2dac-4811-bc83-ea7cdd1b70eb', NULL, 1000.00, '2020-02-05 08:00:00', 1, NULL, '11112222', 'Tencent', NULL, 1);
+INSERT INTO `income` VALUES (5, '2020-02-05 15:11:15', b'0', '2020-02-05 15:11:15', 'da674b2f-e58f-4e92-9232-05ead55e2d9f', NULL, 1000.00, '2020-02-05 08:00:00', 1, NULL, '11112222', 'Tencent', 1, 1);
 COMMIT;
 
 -- ----------------------------
@@ -185,6 +238,8 @@ INSERT INTO `income_photos` VALUES (3, 'http://a');
 INSERT INTO `income_photos` VALUES (3, 'http://b');
 INSERT INTO `income_photos` VALUES (4, 'http://a');
 INSERT INTO `income_photos` VALUES (4, 'http://b');
+INSERT INTO `income_photos` VALUES (5, 'http://a');
+INSERT INTO `income_photos` VALUES (5, 'http://b');
 COMMIT;
 
 -- ----------------------------
@@ -3921,6 +3976,21 @@ INSERT INTO `role` VALUES (3, NULL, b'0', NULL, NULL, NULL, 'User', 'user');
 COMMIT;
 
 -- ----------------------------
+-- Table structure for seq_expense
+-- ----------------------------
+DROP TABLE IF EXISTS `seq_expense`;
+CREATE TABLE `seq_expense` (
+  `next_val` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of seq_expense
+-- ----------------------------
+BEGIN;
+INSERT INTO `seq_expense` VALUES (4);
+COMMIT;
+
+-- ----------------------------
 -- Table structure for seq_fundraising
 -- ----------------------------
 DROP TABLE IF EXISTS `seq_fundraising`;
@@ -3962,7 +4032,7 @@ CREATE TABLE `seq_income` (
 -- Records of seq_income
 -- ----------------------------
 BEGIN;
-INSERT INTO `seq_income` VALUES (5);
+INSERT INTO `seq_income` VALUES (6);
 COMMIT;
 
 -- ----------------------------

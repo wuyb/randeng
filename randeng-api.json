@@ -1243,7 +1243,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"fundraisings\": [{\"id\":1}],\n  \"serialNumber\": \"11112222\",\n  \"bookingDate\": \"2020-02-05 00:00:00\",\n  \"amount\": \"1000\",\n  \"photos\": [\"http://a\", \"http://b\"],\n  \"incomeType\": \"ORGANIZATION\",\n  \"source\": \"Tencent\"\n}"
+									"raw": "{\n  \"fundraising\": {\"id\":1},\n  \"serialNumber\": \"11112222\",\n  \"bookingDate\": \"2020-02-05 00:00:00\",\n  \"amount\": \"1000\",\n  \"photos\": [\"http://a\", \"http://b\"],\n  \"incomeType\": \"ORGANIZATION\",\n  \"source\": \"Tencent\"\n}"
 								},
 								"url": {
 									"raw": "{{host}}/admin/income",
@@ -1333,6 +1333,127 @@
 									"path": [
 										"admin",
 										"income",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "expense",
+					"item": [
+						{
+							"name": "create expense",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"fundraising\": {\"id\":1},\n  \"serialNumber\": \"11112222\",\n  \"bookingDate\": \"2020-02-05 00:00:00\",\n  \"amount\": \"1000\",\n  \"photos\": [\"http://a\", \"http://b\"],\n  \"expenseType\": \"LOGISTIC\"\n}"
+								},
+								"url": {
+									"raw": "{{host}}/admin/expense",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"expense"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get expenses",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/admin/expense",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"expense"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get expense",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"fundraisings\": [{\"id\":1}],\n  \"purchaser\": \"test user\",\n  \"purchaseDate\": \"2020-02-05 00:00:00\",\n  \"amount\": \"1000\",\n  \"invoicePhotos\": [\"http://a\", \"http://b\"],\n  \"transferPhotos\": [\"http://c\", \"http://d\"],\n  \"fieldPhotos\": [\"http://e\", \"http://f\"]\n}"
+								},
+								"url": {
+									"raw": "{{host}}/admin/expense/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"expense",
 										"1"
 									]
 								}

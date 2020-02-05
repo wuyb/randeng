@@ -112,4 +112,10 @@ public class UserController extends BaseController {
         userService.update(user);
         return ResponseEntity.ok(WebResponse.success());
     }
+
+    @RequestMapping(value = "info", method = RequestMethod.GET)
+    public @ResponseBody
+    ResponseEntity<?> getCurrentUser() {
+        return ResponseEntity.ok(WebResponse.success(currentUser()));
+    }
 }

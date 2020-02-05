@@ -1528,6 +1528,43 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "district",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}/district?parentId=0",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"district"
+					],
+					"query": [
+						{
+							"key": "parentId",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

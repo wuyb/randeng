@@ -14,7 +14,7 @@ public class RDApplication {
 	public class RDMvcConfigurer implements WebMvcConfigurer {
 		@Override
 		public void addCorsMappings(CorsRegistry registry) {
-			registry.addMapping("/**").allowedOrigins("*").allowedMethods("PUT", "POST", "DELETE", "GET");
+			registry.addMapping("/**").allowedOrigins("*");//.allowedMethods("PUT", "POST", "DELETE", "GET");
 		}
 	}
 

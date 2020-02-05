@@ -9,8 +9,10 @@ import com.randeng.api.controller.common.WebResponse;
 import com.randeng.api.model.Fundraising;
 import com.randeng.api.model.Hospital;
 import com.randeng.api.model.Inventory;
+import com.randeng.api.model.Logistic;
 import com.randeng.api.service.FundraisingService;
 import com.randeng.api.service.HospitalService;
+import com.randeng.api.service.LogisticService;
 import com.randeng.tools.DateUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -20,6 +22,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -33,6 +36,9 @@ public class FundraisingController extends BaseController {
 
     @Resource(name = "hospitalServiceImpl")
     private HospitalService hospitalService;
+
+    @Resource(name = "logisticServiceImpl")
+    private LogisticService logisticService;
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     @Secured({"ROLE_admin", "ROLE_operator"})
@@ -201,7 +207,7 @@ public class FundraisingController extends BaseController {
     @RequestMapping(value = "{id}/inventory", method = RequestMethod.POST)
     @Secured({"ROLE_admin", "ROLE_operator"})
     public @ResponseBody
-    ResponseEntity<?> inventory(@PathVariable Long id, @RequestBody Inventory inventory) {
+    ResponseEntity<?> setInventory(@PathVariable Long id, @RequestBody Inventory inventory) {
         Fundraising fundraising = fundraisingService.find(id);
         if (fundraising == null) {
             return ResponseEntity.notFound().build();
@@ -212,4 +218,61 @@ public class FundraisingController extends BaseController {
         return ResponseEntity.ok(WebResponse.success(true));
     }
 
+    @RequestMapping(value = "{id}/logistic", method = RequestMethod.POST)
+    @Secured({"ROLE_admin", "ROLE_operator"})
+    public @ResponseBody
+    ResponseEntity<?> addLogistics(@PathVariable Long id, @RequestBody List<Logistic> logistics) {
+        Fundraising fundraising = fundraisingService.find(id);
+        if (fundraising == null) {
+            return ResponseEntity.notFound().build();
+        }
+        if (fundraising.getLogistics() == null) {
+            fundraising.setLogistics(new ArrayList<>());
+        }
+        for (Logistic logistic : logistics) {
+            if (logistic.getHospital() == null) {
+                return ResponseEntity.badRequest().body("Hospital is required.");
+            }
+            boolean foundHospital = false;
+            for (Hospital hospital : fundraising.getHospitals()) {
+                if (hospital.getId().equals(logistic.getHospital().getId())) {
+                    foundHospital = true;
+                    break;
+                }
+            }
+            if (!foundHospital) {
+                return ResponseEntity.badRequest().body("The hospital " + logistic.getHospital().getId() + " is not in fundraising " + fundraising.getId());
+            }
+            logistic.setStatus(Logistic.LogisticStatus.SHIPPED);
+            logistic.setFundraising(fundraising);
+            fundraising.getLogistics().add(logistic);
+        }
+        fundraisingService.update(fundraising);
+        return ResponseEntity.ok(WebResponse.success(true));
+    }
+
+    @RequestMapping(value = "{fundraisingId}/logistic/{logisticId}", method = RequestMethod.PUT)
+    @Secured({"ROLE_admin", "ROLE_operator"})
+    public @ResponseBody
+    ResponseEntity<?> updateLogisticToDelivered(@PathVariable Long fundraisingId, @PathVariable Long logisticId, @RequestBody Logistic logistic) {
+        Fundraising fundraising = fundraisingService.find(fundraisingId);
+        if (fundraising == null) {
+            return ResponseEntity.notFound().build();
+        }
+        Logistic logisticToUpdate = null;
+        for (Logistic l : fundraising.getLogistics()) {
+            if (l.getId().equals(logisticId)) {
+                logisticToUpdate = l;
+                break;
+            }
+        }
+        if (logisticToUpdate == null) {
+            return ResponseEntity.badRequest().body("The logistic " + logisticId + " is not in fundraising " + fundraisingId);
+        }
+        logisticToUpdate.setActualDeliveryDate(logistic.getActualDeliveryDate());
+        logisticToUpdate.setDeliveryPhotos(logistic.getDeliveryPhotos());
+        logisticToUpdate.setStatus(Logistic.LogisticStatus.DELIVERED);
+        logisticService.update(logisticToUpdate);
+        return ResponseEntity.ok(WebResponse.success(true));
+    }
 }

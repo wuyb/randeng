@@ -1,6 +1,8 @@
 package com.randeng.api.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -38,6 +40,7 @@ public class Fundraising extends BaseEntity<Long> {
     private FundRaisingStatus status;
 
     private Inventory inventory;
+    private List<Logistic> logistics;
 
     @Column(nullable = false)
     public String getName() {
@@ -182,5 +185,15 @@ public class Fundraising extends BaseEntity<Long> {
 
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
+    }
+
+    @OneToMany(mappedBy = "fundraising", cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    public List<Logistic> getLogistics() {
+        return logistics;
+    }
+
+    public void setLogistics(List<Logistic> logistics) {
+        this.logistics = logistics;
     }
 }

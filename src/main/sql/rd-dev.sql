@@ -11,7 +11,7 @@
  Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 04/02/2020 17:27:01
+ Date: 05/02/2020 14:31:54
 */
 
 SET NAMES utf8mb4;
@@ -39,14 +39,16 @@ CREATE TABLE `fundraising` (
   `start_time` datetime NOT NULL,
   `status` int(11) NOT NULL,
   `total_price` decimal(19,2) NOT NULL,
-  PRIMARY KEY (`id`)
+  `inventory_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK4xjiib6rnxc58poeyn33y8pqv` (`inventory_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of fundraising
 -- ----------------------------
 BEGIN;
-INSERT INTO `fundraising` VALUES (1, '2020-02-04 16:07:02', b'0', '2020-02-04 16:10:36', '6811ca65-8d4c-4449-b346-dbb6095f6c9c', NULL, 100.00, '3M', '2020-02-09 08:00:00', '货物所在地', '3M', 'N95口罩', '3M产地', '医用', '2020-02-05 08:00:00', 1, 1000.00);
+INSERT INTO `fundraising` VALUES (1, '2020-02-04 16:07:02', b'0', '2020-02-05 14:07:34', '6811ca65-8d4c-4449-b346-dbb6095f6c9c', NULL, 100.00, '3M', '2020-02-09 08:00:00', '货物所在地', '3M', 'N95口罩', '3M产地', '医用', '2020-02-05 08:00:00', 1, 1000.00, 1);
 COMMIT;
 
 -- ----------------------------
@@ -135,6 +137,174 @@ INSERT INTO `hospital` VALUES (52, '2020-02-04 15:44:11', b'0', '2020-02-04 15:4
 COMMIT;
 
 -- ----------------------------
+-- Table structure for inventory
+-- ----------------------------
+DROP TABLE IF EXISTS `inventory`;
+CREATE TABLE `inventory` (
+  `id` bigint(20) NOT NULL,
+  `create_date` datetime DEFAULT NULL,
+  `deleted` bit(1) DEFAULT NULL,
+  `update_date` datetime DEFAULT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `version` bigint(20) DEFAULT NULL,
+  `inventory_date` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of inventory
+-- ----------------------------
+BEGIN;
+INSERT INTO `inventory` VALUES (1, '2020-02-05 04:57:29', b'0', '2020-02-05 04:57:29', '61c458e3-4d6f-42fc-a122-540cc2962fcb', NULL, '2020-02-05 08:00:00');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for inventory_field_photos
+-- ----------------------------
+DROP TABLE IF EXISTS `inventory_field_photos`;
+CREATE TABLE `inventory_field_photos` (
+  `inventory_id` bigint(20) NOT NULL,
+  `field_photos` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  KEY `FK5opvwvctacfcx860l6s0a8129` (`inventory_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of inventory_field_photos
+-- ----------------------------
+BEGIN;
+INSERT INTO `inventory_field_photos` VALUES (1, 'http://a');
+INSERT INTO `inventory_field_photos` VALUES (1, 'http://b');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for logistic
+-- ----------------------------
+DROP TABLE IF EXISTS `logistic`;
+CREATE TABLE `logistic` (
+  `id` bigint(20) NOT NULL,
+  `create_date` datetime DEFAULT NULL,
+  `deleted` bit(1) DEFAULT NULL,
+  `update_date` datetime DEFAULT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `version` bigint(20) DEFAULT NULL,
+  `actual_delivery_date` datetime DEFAULT NULL,
+  `amount` decimal(19,2) NOT NULL,
+  `distributor_charge` decimal(19,2) DEFAULT NULL,
+  `distributor_ticket_no` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `expected_delivery_date` datetime DEFAULT NULL,
+  `logistic_type` int(11) NOT NULL,
+  `shipping_date` datetime NOT NULL,
+  `status` int(11) NOT NULL,
+  `volunteer_name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `fundraising_id` bigint(20) NOT NULL,
+  `hospital_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKbgke4lmf8yehwxb936bvikkmu` (`fundraising_id`),
+  KEY `FKek0v6u8kq79lad29u3ruohdvs` (`hospital_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of logistic
+-- ----------------------------
+BEGIN;
+INSERT INTO `logistic` VALUES (1, '2020-02-05 14:01:40', b'0', '2020-02-05 14:31:14', '3a0f4bd3-694e-434f-91e7-82cefb3a370e', NULL, '2020-02-10 08:00:00', 100.00, 1.00, '123456', '2020-02-10 08:00:00', 0, '2020-02-05 08:00:00', 1, NULL, 1, 1);
+INSERT INTO `logistic` VALUES (3, '2020-02-05 14:07:34', b'0', '2020-02-05 14:07:34', '0a82188e-3892-4fe2-8a03-7ed4a1ca686b', NULL, NULL, 100.00, NULL, NULL, '2020-02-10 08:00:00', 1, '2020-02-05 08:00:00', 0, 'Zhang', 1, 1);
+INSERT INTO `logistic` VALUES (5, '2020-02-05 14:16:15', b'0', '2020-02-05 14:16:15', 'df7b603e-6808-441f-99af-6ee7cdaae479', NULL, NULL, 100.00, NULL, NULL, '2020-02-10 08:00:00', 1, '2020-02-05 08:00:00', 0, 'Zhang', 1, 1);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for logistic_delivery_photos
+-- ----------------------------
+DROP TABLE IF EXISTS `logistic_delivery_photos`;
+CREATE TABLE `logistic_delivery_photos` (
+  `logistic_id` bigint(20) NOT NULL,
+  `delivery_photos` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  KEY `FKo4rttngjg86dg1gqbsaksllca` (`logistic_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of logistic_delivery_photos
+-- ----------------------------
+BEGIN;
+INSERT INTO `logistic_delivery_photos` VALUES (1, 'http://a');
+INSERT INTO `logistic_delivery_photos` VALUES (1, 'http://b');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for logistic_distributor_field_photos
+-- ----------------------------
+DROP TABLE IF EXISTS `logistic_distributor_field_photos`;
+CREATE TABLE `logistic_distributor_field_photos` (
+  `logistic_id` bigint(20) NOT NULL,
+  `distributor_field_photos` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  KEY `FKhuxbubsadegdvk4vqy4x7vll3` (`logistic_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of logistic_distributor_field_photos
+-- ----------------------------
+BEGIN;
+INSERT INTO `logistic_distributor_field_photos` VALUES (1, 'http://e');
+INSERT INTO `logistic_distributor_field_photos` VALUES (1, 'http://f');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for logistic_distributor_invoice_photos
+-- ----------------------------
+DROP TABLE IF EXISTS `logistic_distributor_invoice_photos`;
+CREATE TABLE `logistic_distributor_invoice_photos` (
+  `logistic_id` bigint(20) NOT NULL,
+  `distributor_invoice_photos` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  KEY `FKghs14xg5vab4rgue7cj8b9w2v` (`logistic_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of logistic_distributor_invoice_photos
+-- ----------------------------
+BEGIN;
+INSERT INTO `logistic_distributor_invoice_photos` VALUES (1, 'http://a');
+INSERT INTO `logistic_distributor_invoice_photos` VALUES (1, 'http://b');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for logistic_distributor_transfer_photos
+-- ----------------------------
+DROP TABLE IF EXISTS `logistic_distributor_transfer_photos`;
+CREATE TABLE `logistic_distributor_transfer_photos` (
+  `logistic_id` bigint(20) NOT NULL,
+  `distributor_transfer_photos` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  KEY `FKiar6nx4ylwrty7t019cain2qe` (`logistic_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of logistic_distributor_transfer_photos
+-- ----------------------------
+BEGIN;
+INSERT INTO `logistic_distributor_transfer_photos` VALUES (1, 'http://c');
+INSERT INTO `logistic_distributor_transfer_photos` VALUES (1, 'http://d');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for logistic_volunteer_field_photos
+-- ----------------------------
+DROP TABLE IF EXISTS `logistic_volunteer_field_photos`;
+CREATE TABLE `logistic_volunteer_field_photos` (
+  `logistic_id` bigint(20) NOT NULL,
+  `volunteer_field_photos` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  KEY `FKuxcb5g4pmb5y8oofm8q2scgv` (`logistic_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of logistic_volunteer_field_photos
+-- ----------------------------
+BEGIN;
+INSERT INTO `logistic_volunteer_field_photos` VALUES (3, 'http://a');
+INSERT INTO `logistic_volunteer_field_photos` VALUES (3, 'http://b');
+INSERT INTO `logistic_volunteer_field_photos` VALUES (5, 'http://a');
+INSERT INTO `logistic_volunteer_field_photos` VALUES (5, 'http://b');
+COMMIT;
+
+-- ----------------------------
 -- Table structure for photo
 -- ----------------------------
 DROP TABLE IF EXISTS `photo`;
@@ -148,6 +318,102 @@ CREATE TABLE `photo` (
   `url` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Table structure for purchase
+-- ----------------------------
+DROP TABLE IF EXISTS `purchase`;
+CREATE TABLE `purchase` (
+  `id` bigint(20) NOT NULL,
+  `create_date` datetime DEFAULT NULL,
+  `deleted` bit(1) DEFAULT NULL,
+  `update_date` datetime DEFAULT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `version` bigint(20) DEFAULT NULL,
+  `amount` decimal(19,2) NOT NULL,
+  `purchase_date` datetime NOT NULL,
+  `purchaser` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `status` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of purchase
+-- ----------------------------
+BEGIN;
+INSERT INTO `purchase` VALUES (1, '2020-02-05 03:29:00', b'0', '2020-02-05 03:36:35', '66324fa5-5632-4737-b14c-dee423e39bac', NULL, 1000.00, '2020-02-05 08:00:00', 'test user', 2);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for purchase_field_photos
+-- ----------------------------
+DROP TABLE IF EXISTS `purchase_field_photos`;
+CREATE TABLE `purchase_field_photos` (
+  `purchase_id` bigint(20) NOT NULL,
+  `field_photos` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  KEY `FK3g6vc1rxkn3xxroqrd1whci3g` (`purchase_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of purchase_field_photos
+-- ----------------------------
+BEGIN;
+INSERT INTO `purchase_field_photos` VALUES (1, 'http://e');
+INSERT INTO `purchase_field_photos` VALUES (1, 'http://f');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for purchase_fundraising
+-- ----------------------------
+DROP TABLE IF EXISTS `purchase_fundraising`;
+CREATE TABLE `purchase_fundraising` (
+  `purchase_id` bigint(20) NOT NULL,
+  `fundraising_id` bigint(20) NOT NULL,
+  UNIQUE KEY `UK_p58suaw35721leh7aiswsmi8i` (`fundraising_id`),
+  KEY `FKayei3ij8yhl703gcagnv4mnug` (`purchase_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of purchase_fundraising
+-- ----------------------------
+BEGIN;
+INSERT INTO `purchase_fundraising` VALUES (1, 1);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for purchase_invoice_photos
+-- ----------------------------
+DROP TABLE IF EXISTS `purchase_invoice_photos`;
+CREATE TABLE `purchase_invoice_photos` (
+  `purchase_id` bigint(20) NOT NULL,
+  `invoice_photos` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  KEY `FKbiwkjkudm547d8321qq41ahfg` (`purchase_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of purchase_invoice_photos
+-- ----------------------------
+BEGIN;
+INSERT INTO `purchase_invoice_photos` VALUES (1, 'http://a');
+INSERT INTO `purchase_invoice_photos` VALUES (1, 'http://b');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for purchase_transfer_photos
+-- ----------------------------
+DROP TABLE IF EXISTS `purchase_transfer_photos`;
+CREATE TABLE `purchase_transfer_photos` (
+  `purchase_id` bigint(20) NOT NULL,
+  `transfer_photos` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  KEY `FKcrpbfgoep2teb4viufjfb3yg8` (`purchase_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of purchase_transfer_photos
+-- ----------------------------
+BEGIN;
+INSERT INTO `purchase_transfer_photos` VALUES (1, 'http://single');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for rc_district
@@ -3634,6 +3900,36 @@ INSERT INTO `seq_hospital` VALUES (151);
 COMMIT;
 
 -- ----------------------------
+-- Table structure for seq_inventory
+-- ----------------------------
+DROP TABLE IF EXISTS `seq_inventory`;
+CREATE TABLE `seq_inventory` (
+  `next_val` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of seq_inventory
+-- ----------------------------
+BEGIN;
+INSERT INTO `seq_inventory` VALUES (2);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for seq_logistic
+-- ----------------------------
+DROP TABLE IF EXISTS `seq_logistic`;
+CREATE TABLE `seq_logistic` (
+  `next_val` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of seq_logistic
+-- ----------------------------
+BEGIN;
+INSERT INTO `seq_logistic` VALUES (6);
+COMMIT;
+
+-- ----------------------------
 -- Table structure for seq_photo
 -- ----------------------------
 DROP TABLE IF EXISTS `seq_photo`;
@@ -3646,6 +3942,21 @@ CREATE TABLE `seq_photo` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `seq_photo` VALUES (1);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for seq_purchase
+-- ----------------------------
+DROP TABLE IF EXISTS `seq_purchase`;
+CREATE TABLE `seq_purchase` (
+  `next_val` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of seq_purchase
+-- ----------------------------
+BEGIN;
+INSERT INTO `seq_purchase` VALUES (2);
 COMMIT;
 
 -- ----------------------------

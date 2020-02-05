@@ -859,6 +859,124 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "add distributor logistic",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[{\n\t\"fundraising\": {\"id\": 1},\n\t\"hospital\": {\"id\": 1},\n\t\"amount\": \"100\",\n\t\"shippingDate\": \"2020-02-05 00:00:00\",\n\t\"expectedDeliveryDate\": \"2020-02-10 00:00:00\",\n\t\"logisticType\": \"DISTRIBUTOR\",\n\t\"distributorTicketNo\": \"123456\",\n\t\"distributorCharge\": \"1.0\",\n    \"distributorInvoicePhotos\": [\"http://a\", \"http://b\"],\n    \"distributorTransferPhotos\": [\"http://c\", \"http://d\"],\n    \"distributorFieldPhotos\": [\"http://e\", \"http://f\"]\n}]"
+								},
+								"url": {
+									"raw": "{{host}}/admin/fundraising/1/logistic",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"fundraising",
+										"1",
+										"logistic"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add volunteer logistic",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[{\n\t\"fundraising\": {\"id\": 1},\n\t\"hospital\": {\"id\": 1},\n\t\"amount\": \"100\",\n\t\"shippingDate\": \"2020-02-05 00:00:00\",\n\t\"expectedDeliveryDate\": \"2020-02-10 00:00:00\",\n\t\"logisticType\": \"VOLUNTEER\",\n\t\"volunteerName\": \"Zhang\",\n    \"volunteerFieldPhotos\": [\"http://a\", \"http://b\"]\n}]"
+								},
+								"url": {
+									"raw": "{{host}}/admin/fundraising/1/logistic",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"fundraising",
+										"1",
+										"logistic"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "set logistic as delivered",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiY3JlYXRlZCI6MTU4MDc4NDY3MzU4MywiZXhwIjoyMTg1NTg0NjczLCJ1c2VySWQiOjF9.ZMalbKM4oc-C8AgH6Di520NDSLyA6qmQ5Zh7XN775sluwjLfTBpr8QZ7611LnaOXWOegsOntwP968DskHCxCxw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"actualDeliveryDate\": \"2020-02-10 00:00:00\",\n    \"deliveryPhotos\": [\"http://a\", \"http://b\"]\n}"
+								},
+								"url": {
+									"raw": "{{host}}/admin/fundraising/1/logistic/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"admin",
+										"fundraising",
+										"1",
+										"logistic",
+										"1"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"_postman_isSubFolder": true

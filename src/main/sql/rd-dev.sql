@@ -11,7 +11,7 @@
  Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 05/02/2020 14:31:54
+ Date: 05/02/2020 15:02:48
 */
 
 SET NAMES utf8mb4;
@@ -134,6 +134,57 @@ CREATE TABLE `hospital` (
 BEGIN;
 INSERT INTO `hospital` VALUES (1, '2020-02-04 12:14:07', b'0', '2020-02-04 12:24:28', NULL, NULL, '北京市东城区帅府园一号', 52, '刘大夫', '北京协和医院是北京协和医学院的临床学院。中国医学科学院的临床医学研究所,是卫生部指定的全国疑难重症诊治指导中心之一。', '13800000333', '北京协和医院东院', 'https://bkimg.cdn.bcebos.com/pic/0824ab18972bd4077b2d634675899e510eb309a6?x-bce-process=image/watermark,g_7,image_d2F0ZXIvYmFpa2UyMjA=,xp_5,yp_5', 2, 500, '北京协和医院是一所位于北京市东城区，集医疗、科研、教学为一体的大型综合医院。它隶属于中国协和医科大学(2006年改为北京协和医学院/清华大学医学部)，是其临床医学院，同时也是中国医学科学院的临床医学研究所，中华人民共和国卫生部指定的诊治疑难重症的技术指导中心。');
 INSERT INTO `hospital` VALUES (52, '2020-02-04 15:44:11', b'0', '2020-02-04 15:44:11', 'bea0ada4-6e76-49f6-9ff6-3beb51be04e9', NULL, '北京市西城区二龙路', 52, '刘大夫', '北京协和医院是北京协和医学院的临床学院。中国医学科学院的临床医学研究所,是卫生部指定的全国疑难重症诊治指导中心之一。', '13800000000', '北京协和医院西院', 'https://bkimg.cdn.bcebos.com/pic/0824ab18972bd4077b2d634675899e510eb309a6?x-bce-process=image/watermark,g_7,image_d2F0ZXIvYmFpa2UyMjA=,xp_5,yp_5', 2, 501, '北京协和医院是一所位于北京市东城区，集医疗、科研、教学为一体的大型综合医院。它隶属于中国协和医科大学(2006年改为北京协和医学院/清华大学医学部)，是其临床医学院，同时也是中国医学科学院的临床医学研究所，中华人民共和国卫生部指定的诊治疑难重症的技术指导中心。');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for income
+-- ----------------------------
+DROP TABLE IF EXISTS `income`;
+CREATE TABLE `income` (
+  `id` bigint(20) NOT NULL,
+  `create_date` datetime DEFAULT NULL,
+  `deleted` bit(1) DEFAULT NULL,
+  `update_date` datetime DEFAULT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `version` bigint(20) DEFAULT NULL,
+  `amount` decimal(19,2) NOT NULL,
+  `booking_date` datetime NOT NULL,
+  `income_type` int(11) NOT NULL,
+  `operator` tinyblob,
+  `serial_number` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `source` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `fundraising_id` bigint(20) DEFAULT NULL,
+  `operator_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKfvt2ell3djtu3rk2kykf9rkau` (`fundraising_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of income
+-- ----------------------------
+BEGIN;
+INSERT INTO `income` VALUES (3, '2020-02-05 15:00:21', b'0', '2020-02-05 15:00:21', 'af0d14cf-37f4-4dee-a446-c9d3c1021a43', NULL, 1000.00, '2020-02-05 08:00:00', 0, NULL, '11112222', 'Zhang', NULL, 1);
+INSERT INTO `income` VALUES (4, '2020-02-05 15:01:07', b'0', '2020-02-05 15:01:07', 'c77107ff-2dac-4811-bc83-ea7cdd1b70eb', NULL, 1000.00, '2020-02-05 08:00:00', 1, NULL, '11112222', 'Tencent', NULL, 1);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for income_photos
+-- ----------------------------
+DROP TABLE IF EXISTS `income_photos`;
+CREATE TABLE `income_photos` (
+  `income_id` bigint(20) NOT NULL,
+  `photos` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  KEY `FK2farhr2w3t5t5rd9thh0id8dl` (`income_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of income_photos
+-- ----------------------------
+BEGIN;
+INSERT INTO `income_photos` VALUES (3, 'http://a');
+INSERT INTO `income_photos` VALUES (3, 'http://b');
+INSERT INTO `income_photos` VALUES (4, 'http://a');
+INSERT INTO `income_photos` VALUES (4, 'http://b');
 COMMIT;
 
 -- ----------------------------
@@ -3897,6 +3948,21 @@ CREATE TABLE `seq_hospital` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `seq_hospital` VALUES (151);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for seq_income
+-- ----------------------------
+DROP TABLE IF EXISTS `seq_income`;
+CREATE TABLE `seq_income` (
+  `next_val` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of seq_income
+-- ----------------------------
+BEGIN;
+INSERT INTO `seq_income` VALUES (5);
 COMMIT;
 
 -- ----------------------------

@@ -1,6 +1,6 @@
 package com.randeng.api.controller.admin;
 
-import com.randeng.api.common.Page;
+import com.randeng.api.common.Filter;
 import com.randeng.api.common.Pageable;
 import com.randeng.api.controller.common.BaseController;
 import com.randeng.api.controller.common.ErrorCode;
@@ -62,9 +62,33 @@ public class HospitalController extends BaseController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     @Secured({"ROLE_admin", "ROLE_operator"})
     public @ResponseBody
-    ResponseEntity<?> list(@RequestParam(required = false, defaultValue = "1") Integer pageNumber, @RequestParam(required = false, defaultValue = "10") Integer pageSize) {
-        Page<Hospital> hospitalPage = hospitalService.findPage(new Pageable(pageNumber, pageSize));
-        return ResponseEntity.ok(WebResponse.success(hospitalPage));
+    ResponseEntity<?> list(@RequestParam(required = false, defaultValue = "1") Integer pageNumber,
+                           @RequestParam(required = false, defaultValue = "10") Integer pageSize,
+                           @RequestParam(required = false) Long province,
+                           @RequestParam(required = false) Long city,
+                           @RequestParam(required = false) Long region
+                           ) {
+        Pageable pageable = new Pageable(pageNumber, pageSize);
+        if (province != null || city != null || region != null) {
+            String attribute = null;
+            Long attrValue = null;
+            if (province != null) {
+                attribute = "provinceId";
+                attrValue = province;
+            }
+            if (city != null) {
+                attribute = "cityId";
+                attrValue = city;
+            }
+            if (region != null) {
+                attribute = "regionId";
+                attrValue = region;
+            }
+            pageable.getFilters().add(Filter.eq(attribute, attrValue));
+            return ResponseEntity.ok(WebResponse.success(hospitalService.findPage(pageable)));
+        } else {
+            return ResponseEntity.ok(WebResponse.success(hospitalService.findPage(pageable)));
+        }
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)

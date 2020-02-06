@@ -3,6 +3,7 @@ package com.randeng.api.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -34,6 +35,11 @@ public class User extends BaseEntity<Long> {
      * The mobile number for the user.
      */
     private String mobile;
+
+    /**
+     * The total amount of donations.
+     */
+    private BigDecimal donationAmount;
 
     /**
      * The roles of the user.
@@ -89,5 +95,14 @@ public class User extends BaseEntity<Long> {
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
+    }
+
+    @Column(nullable = false)
+    public BigDecimal getDonationAmount() {
+        return donationAmount;
+    }
+
+    public void setDonationAmount(BigDecimal donationAmount) {
+        this.donationAmount = donationAmount;
     }
 }

@@ -45,4 +45,9 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements User
         Role role = roles.get(0);
         return userDao.findByRoleInPage(role, pageable);
     }
+
+    @Override
+    public Long getPosition(User user) {
+        return userDao.getPosition(user);
+    }
 }

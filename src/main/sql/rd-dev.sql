@@ -11,7 +11,7 @@
  Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 06/02/2020 10:02:57
+ Date: 06/02/2020 11:36:24
 */
 
 SET NAMES utf8mb4;
@@ -4201,6 +4201,7 @@ CREATE TABLE `user` (
   `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `username` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `mobile` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `donation_amount` decimal(19,2) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -4208,9 +4209,9 @@ CREATE TABLE `user` (
 -- Records of user
 -- ----------------------------
 BEGIN;
-INSERT INTO `user` VALUES (1, '2020-02-04 01:05:53', b'0', '2020-02-04 01:05:53', '4f6a2750-22d6-4d7b-94ed-cb001e256be7', NULL, 'test', '$2a$10$pW7SagvM6OhYh/XLSR.pKujy6FYnGJnfylGsrly0UW22sFVyLfcxe', 'test', NULL);
-INSERT INTO `user` VALUES (52, '2020-02-04 03:48:20', b'0', '2020-02-04 03:48:20', 'ae1d8c83-6715-48b2-bbd0-45dc37406d34', NULL, 'wang', '$2a$10$JGdSnsrmjUDaPHIY9NBsyOd7omOCzZWAEbnrT9qM9yclfGH3EiHs2', 'wang', NULL);
-INSERT INTO `user` VALUES (102, '2020-02-04 11:12:22', b'0', '2020-02-04 11:30:58', 'b3dbde55-716c-42da-b612-715142c063bc', NULL, 'wangx', '$2a$10$tJu/wnLDRqlYHSNJ7XwDSO9s.DHj7KR1WlneH0e84EQbmf9HdYQJ2', 'wang1', '13800000001');
+INSERT INTO `user` VALUES (1, '2020-02-04 01:05:53', b'0', '2020-02-04 01:05:53', '4f6a2750-22d6-4d7b-94ed-cb001e256be7', NULL, 'test', '$2a$10$pW7SagvM6OhYh/XLSR.pKujy6FYnGJnfylGsrly0UW22sFVyLfcxe', 'test', NULL, 0.00);
+INSERT INTO `user` VALUES (52, '2020-02-04 03:48:20', b'0', '2020-02-04 03:48:20', 'ae1d8c83-6715-48b2-bbd0-45dc37406d34', NULL, 'wang', '$2a$10$JGdSnsrmjUDaPHIY9NBsyOd7omOCzZWAEbnrT9qM9yclfGH3EiHs2', 'wang', NULL, 1.00);
+INSERT INTO `user` VALUES (102, '2020-02-04 11:12:22', b'0', '2020-02-04 11:30:58', 'b3dbde55-716c-42da-b612-715142c063bc', NULL, 'wangx', '$2a$10$tJu/wnLDRqlYHSNJ7XwDSO9s.DHj7KR1WlneH0e84EQbmf9HdYQJ2', 'wang1', '13800000001', 3.00);
 COMMIT;
 
 -- ----------------------------

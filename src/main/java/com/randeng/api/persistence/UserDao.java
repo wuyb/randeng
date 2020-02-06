@@ -10,4 +10,5 @@ import com.randeng.api.model.User;
  */
 public interface UserDao extends BaseDao<User, Long> {
     Page<User> findByRoleInPage(Role role, Pageable pageable);
+    Long getPosition(User user);
 }

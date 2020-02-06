@@ -22,4 +22,6 @@ public interface UserService extends BaseService<User, Long> {
      * @return a page object
      */
     Page<User> findByRole(String roleName, Pageable pageable);
+
+    Long getPosition(User currentUser);
 }

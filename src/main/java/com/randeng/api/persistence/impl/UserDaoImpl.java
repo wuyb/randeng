@@ -33,4 +33,13 @@ public class UserDaoImpl extends BaseDaoImpl<User, Long> implements UserDao {
 
         return findPage(criteriaQuery, pageable);
     }
+
+    @Override
+    public Long getPosition(User user) {
+        if (user.getDonationAmount().doubleValue() < 0.01) {
+            return null;
+        }
+        Long count = this.count(Filter.gt("donationAmount", user.getDonationAmount()));
+        return count + 1;
+    }
 }

@@ -11,7 +11,7 @@
  Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 06/02/2020 11:36:24
+ Date: 06/02/2020 12:17:52
 */
 
 SET NAMES utf8mb4;
@@ -55,6 +55,36 @@ CREATE TABLE `district` (
   `pid` bigint(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Table structure for donation
+-- ----------------------------
+DROP TABLE IF EXISTS `donation`;
+CREATE TABLE `donation` (
+  `id` bigint(20) NOT NULL,
+  `create_date` datetime DEFAULT NULL,
+  `deleted` bit(1) DEFAULT NULL,
+  `update_date` datetime DEFAULT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `version` bigint(20) DEFAULT NULL,
+  `amount` decimal(19,2) DEFAULT NULL,
+  `comment` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `time` datetime NOT NULL,
+  `fundraising_id` bigint(20) NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK1ucrqfsad7tj1ut2txt6ey2af` (`fundraising_id`),
+  KEY `FK2rx4oikd7rs8ddja8k9xc25my` (`user_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of donation
+-- ----------------------------
+BEGIN;
+INSERT INTO `donation` VALUES (1, '2020-02-06 12:05:59', b'0', '2020-02-06 12:17:10', NULL, NULL, 100.00, '岂曰无衣，与子同袍', '2020-02-06 12:05:59', 1, 1);
+INSERT INTO `donation` VALUES (2, '2020-02-06 12:06:29', b'0', '2020-02-06 12:06:29', NULL, NULL, 100.00, NULL, '2020-02-06 12:06:29', 1, 52);
+INSERT INTO `donation` VALUES (3, '2020-02-06 12:06:47', b'0', '2020-02-06 12:06:47', NULL, NULL, 50.00, NULL, '2020-02-06 12:06:47', 1, 102);
+COMMIT;
 
 -- ----------------------------
 -- Table structure for expense
@@ -4034,6 +4064,21 @@ CREATE TABLE `seq_category` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `seq_category` VALUES (2);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for seq_donation
+-- ----------------------------
+DROP TABLE IF EXISTS `seq_donation`;
+CREATE TABLE `seq_donation` (
+  `next_val` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of seq_donation
+-- ----------------------------
+BEGIN;
+INSERT INTO `seq_donation` VALUES (1);
 COMMIT;
 
 -- ----------------------------

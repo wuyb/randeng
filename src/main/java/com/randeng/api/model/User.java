@@ -1,6 +1,8 @@
 package com.randeng.api.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -74,12 +76,13 @@ public class User extends BaseEntity<Long> {
         this.name = name;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(
             name = "user_role",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
     )
+    @LazyCollection(LazyCollectionOption.FALSE)
     public List<Role> getRoles() {
         return roles;
     }

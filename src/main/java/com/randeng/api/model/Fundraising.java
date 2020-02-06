@@ -135,12 +135,13 @@ public class Fundraising extends BaseEntity<Long> {
         this.amount = amount;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(
             name = "fundraising_hospital",
             joinColumns = @JoinColumn(name = "fundraising_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "hospital_id", referencedColumnName = "id")
     )
+    @LazyCollection(LazyCollectionOption.FALSE)
     public List<Hospital> getHospitals() {
         return hospitals;
     }

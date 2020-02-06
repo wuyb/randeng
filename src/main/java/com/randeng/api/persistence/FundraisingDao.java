@@ -13,4 +13,5 @@ import java.util.List;
 public interface FundraisingDao extends BaseDao<Fundraising, Long> {
     Page<Fundraising> findPageByHospital(Hospital hospital, Pageable pageable);
     Page<Fundraising> findPageByHospitals(List<Hospital> hospitals, Pageable pageable);
+    Page<Fundraising> search(String keyword, Pageable pageable);
 }

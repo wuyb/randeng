@@ -41,6 +41,7 @@ public class Fundraising extends BaseEntity<Long> {
 
     private Inventory inventory;
     private List<Logistic> logistics;
+    private Category category;
 
     @Column(nullable = false)
     public String getName() {
@@ -195,5 +196,15 @@ public class Fundraising extends BaseEntity<Long> {
 
     public void setLogistics(List<Logistic> logistics) {
         this.logistics = logistics;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="category_id", nullable = false, updatable = false)
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

@@ -30,4 +30,10 @@ public class DistrictController extends BaseController {
         return ResponseEntity.ok(WebResponse.success(districts));
     }
 
+    @RequestMapping(value = "search", method = RequestMethod.GET)
+    public @ResponseBody
+    ResponseEntity<?> search(@RequestParam String keyword) {
+        List<District> districts = districtService.search(keyword);
+        return ResponseEntity.ok(WebResponse.success(districts));
+    }
 }

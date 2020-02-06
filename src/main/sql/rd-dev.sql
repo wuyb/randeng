@@ -11,11 +11,33 @@
  Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 05/02/2020 20:12:26
+ Date: 06/02/2020 10:02:57
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for category
+-- ----------------------------
+DROP TABLE IF EXISTS `category`;
+CREATE TABLE `category` (
+  `id` bigint(20) NOT NULL,
+  `create_date` datetime DEFAULT NULL,
+  `deleted` bit(1) DEFAULT NULL,
+  `update_date` datetime DEFAULT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `version` bigint(20) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of category
+-- ----------------------------
+BEGIN;
+INSERT INTO `category` VALUES (1, '2020-02-05 22:27:21', b'0', '2020-02-05 22:27:21', 'bcd78d12-1f5d-4278-a6ac-55b7a5ccc9c6', NULL, '口罩');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for district
@@ -109,7 +131,9 @@ CREATE TABLE `fundraising` (
   `status` int(11) NOT NULL,
   `total_price` decimal(19,2) NOT NULL,
   `inventory_id` bigint(20) DEFAULT NULL,
+  `category_id` bigint(20) NOT NULL,
   PRIMARY KEY (`id`),
+  KEY `FKjftsquj4yw17nqwa33to5oejp` (`category_id`),
   KEY `FK4xjiib6rnxc58poeyn33y8pqv` (`inventory_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -117,7 +141,7 @@ CREATE TABLE `fundraising` (
 -- Records of fundraising
 -- ----------------------------
 BEGIN;
-INSERT INTO `fundraising` VALUES (1, '2020-02-04 16:07:02', b'0', '2020-02-05 14:07:34', '6811ca65-8d4c-4449-b346-dbb6095f6c9c', NULL, 100.00, '3M', '2020-02-09 08:00:00', '货物所在地', '3M', 'N95口罩', '3M产地', '医用', '2020-02-05 08:00:00', 1, 1000.00, 1);
+INSERT INTO `fundraising` VALUES (1, '2020-02-04 16:07:02', b'0', '2020-02-05 14:07:34', '6811ca65-8d4c-4449-b346-dbb6095f6c9c', NULL, 100.00, '3M', '2020-02-09 08:00:00', '货物所在地', '3M', 'N95口罩', '3M产地', '医用', '2020-02-05 08:00:00', 1, 1000.00, 1, 1);
 COMMIT;
 
 -- ----------------------------
@@ -3995,6 +4019,21 @@ BEGIN;
 INSERT INTO `role` VALUES (1, NULL, b'0', NULL, NULL, NULL, 'Admnistrator', 'admin');
 INSERT INTO `role` VALUES (2, NULL, b'0', NULL, NULL, NULL, 'Operator', 'operator');
 INSERT INTO `role` VALUES (3, NULL, b'0', NULL, NULL, NULL, 'User', 'user');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for seq_category
+-- ----------------------------
+DROP TABLE IF EXISTS `seq_category`;
+CREATE TABLE `seq_category` (
+  `next_val` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of seq_category
+-- ----------------------------
+BEGIN;
+INSERT INTO `seq_category` VALUES (2);
 COMMIT;
 
 -- ----------------------------

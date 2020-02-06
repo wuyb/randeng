@@ -26,4 +26,9 @@ public class FundraisingServiceImpl extends BaseServiceImpl<Fundraising, Long> i
     public Page<Fundraising> findPageByHospitals(List<Hospital> hospitals, Pageable pageable) {
         return fundraisingDao.findPageByHospitals(hospitals, pageable);
     }
+
+    @Override
+    public Page<Fundraising> search(String keyword, Pageable pageable) {
+        return fundraisingDao.search(keyword, pageable);
+    }
 }

@@ -105,6 +105,9 @@ public class OperatorController extends BaseController {
     public @ResponseBody
     ResponseEntity<?> disable(@PathVariable Long id) {
         User user = userService.find(id);
+        if (user == null) {
+            return ResponseEntity.notFound().build();
+        }
         userService.delete(user);
         return ResponseEntity.ok(WebResponse.success(true));
     }
@@ -114,6 +117,9 @@ public class OperatorController extends BaseController {
     public @ResponseBody
     ResponseEntity<?> enable(@PathVariable Long id) {
         User user = userService.find(id);
+        if (user == null) {
+            return ResponseEntity.notFound().build();
+        }
         user.setDeleted(false);
         userService.update(user);
         return ResponseEntity.ok(WebResponse.success(true));

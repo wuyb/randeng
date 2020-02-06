@@ -11,10 +11,7 @@ import com.randeng.api.service.FundraisingService;
 import com.randeng.api.service.HospitalService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
@@ -103,6 +100,12 @@ public class FundraisingController extends BaseController {
         }
         Page<Fundraising> fundraisingPage = fundraisingService.search(keyword, pageable);
         return ResponseEntity.ok(WebResponse.success(fundraisingPage));
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    public @ResponseBody
+    ResponseEntity<?> get(@PathVariable Long id) {
+        return ResponseEntity.ok(WebResponse.success(fundraisingService.find(id)));
     }
 
 }

@@ -11,11 +11,37 @@
  Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 06/02/2020 12:17:52
+ Date: 06/02/2020 13:58:31
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for call_record
+-- ----------------------------
+DROP TABLE IF EXISTS `call_record`;
+CREATE TABLE `call_record` (
+  `id` bigint(20) NOT NULL,
+  `create_date` datetime DEFAULT NULL,
+  `deleted` bit(1) DEFAULT NULL,
+  `update_date` datetime DEFAULT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `version` bigint(20) DEFAULT NULL,
+  `comment` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `call_id` bigint(20) NOT NULL,
+  `operator_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK32ioxaobvl1c5n4o48xxa1b3h` (`call_id`),
+  KEY `FKc0n0f6s25k6sqn83nqa3mfg8h` (`operator_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of call_record
+-- ----------------------------
+BEGIN;
+INSERT INTO `call_record` VALUES (1, '2020-02-06 13:38:03', b'0', '2020-02-06 13:38:03', '46b5810a-b525-4241-9215-c8e319eb4a01', NULL, '已处理', 1, 1);
+COMMIT;
 
 -- ----------------------------
 -- Table structure for category
@@ -495,6 +521,49 @@ CREATE TABLE `photo` (
   `url` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Table structure for product_source_call
+-- ----------------------------
+DROP TABLE IF EXISTS `product_source_call`;
+CREATE TABLE `product_source_call` (
+  `id` bigint(20) NOT NULL,
+  `create_date` datetime DEFAULT NULL,
+  `deleted` bit(1) DEFAULT NULL,
+  `update_date` datetime DEFAULT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `version` bigint(20) DEFAULT NULL,
+  `contact` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `mobile` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `product_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `product_spec` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of product_source_call
+-- ----------------------------
+BEGIN;
+INSERT INTO `product_source_call` VALUES (1, '2020-02-06 13:36:42', b'0', '2020-02-06 13:36:42', '9c0c2b66-c7ec-4953-b369-3200e7bae96a', NULL, 'zhang', '1121212', '口罩', '医用');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for product_source_call_photos
+-- ----------------------------
+DROP TABLE IF EXISTS `product_source_call_photos`;
+CREATE TABLE `product_source_call_photos` (
+  `product_source_call_id` bigint(20) NOT NULL,
+  `photos` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  KEY `FKe7uc4fhjjacike7uxr8flcown` (`product_source_call_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of product_source_call_photos
+-- ----------------------------
+BEGIN;
+INSERT INTO `product_source_call_photos` VALUES (1, 'http://a');
+INSERT INTO `product_source_call_photos` VALUES (1, 'http://b');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for purchase
@@ -4052,6 +4121,21 @@ INSERT INTO `role` VALUES (3, NULL, b'0', NULL, NULL, NULL, 'User', 'user');
 COMMIT;
 
 -- ----------------------------
+-- Table structure for seq_call_record
+-- ----------------------------
+DROP TABLE IF EXISTS `seq_call_record`;
+CREATE TABLE `seq_call_record` (
+  `next_val` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of seq_call_record
+-- ----------------------------
+BEGIN;
+INSERT INTO `seq_call_record` VALUES (2);
+COMMIT;
+
+-- ----------------------------
 -- Table structure for seq_category
 -- ----------------------------
 DROP TABLE IF EXISTS `seq_category`;
@@ -4184,6 +4268,21 @@ CREATE TABLE `seq_photo` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `seq_photo` VALUES (1);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for seq_product_source_call
+-- ----------------------------
+DROP TABLE IF EXISTS `seq_product_source_call`;
+CREATE TABLE `seq_product_source_call` (
+  `next_val` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of seq_product_source_call
+-- ----------------------------
+BEGIN;
+INSERT INTO `seq_product_source_call` VALUES (2);
 COMMIT;
 
 -- ----------------------------

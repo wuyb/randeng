@@ -1,6 +1,6 @@
 package com.randeng.api.persistence;
 
-import com.randeng.api.model.Enterprise;
+import com.randeng.api.model.EnterpriseCall;
 
-public interface EnterpriseDao extends BaseDao<Enterprise, Long>{
+public interface EnterpriseDao extends BaseDao<EnterpriseCall, Long>{
 }

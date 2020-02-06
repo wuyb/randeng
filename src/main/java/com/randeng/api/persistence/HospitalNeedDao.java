@@ -1,6 +1,6 @@
 package com.randeng.api.persistence;
 
-import com.randeng.api.model.HospitalNeeds;
+import com.randeng.api.model.HospitalNeedsCall;
 
-public interface HospitalNeedDao extends BaseDao<HospitalNeeds, Long> {
+public interface HospitalNeedDao extends BaseDao<HospitalNeedsCall, Long> {
 }

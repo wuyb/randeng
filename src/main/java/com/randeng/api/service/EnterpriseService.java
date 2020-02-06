@@ -1,12 +1,12 @@
 package com.randeng.api.service;
 
 
-import com.randeng.api.model.Enterprise;
+import com.randeng.api.model.EnterpriseCall;
 
 
 /**
  * This interface defines the fundraising service.
  */
-public interface EnterpriseService extends BaseService<Enterprise, Long> {
+public interface EnterpriseService extends BaseService<EnterpriseCall, Long> {
 
 }

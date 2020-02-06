@@ -11,7 +11,7 @@
  Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 06/02/2020 13:58:31
+ Date: 06/02/2020 19:43:43
 */
 
 SET NAMES utf8mb4;
@@ -110,6 +110,76 @@ BEGIN;
 INSERT INTO `donation` VALUES (1, '2020-02-06 12:05:59', b'0', '2020-02-06 12:17:10', NULL, NULL, 100.00, '岂曰无衣，与子同袍', '2020-02-06 12:05:59', 1, 1);
 INSERT INTO `donation` VALUES (2, '2020-02-06 12:06:29', b'0', '2020-02-06 12:06:29', NULL, NULL, 100.00, NULL, '2020-02-06 12:06:29', 1, 52);
 INSERT INTO `donation` VALUES (3, '2020-02-06 12:06:47', b'0', '2020-02-06 12:06:47', NULL, NULL, 50.00, NULL, '2020-02-06 12:06:47', 1, 102);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for enterprise_call
+-- ----------------------------
+DROP TABLE IF EXISTS `enterprise_call`;
+CREATE TABLE `enterprise_call` (
+  `id` bigint(20) NOT NULL,
+  `create_date` datetime DEFAULT NULL,
+  `deleted` bit(1) DEFAULT NULL,
+  `update_date` datetime DEFAULT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `version` bigint(20) DEFAULT NULL,
+  `contact` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `donations_amount` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `donations_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `enterprise_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `mobile` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of enterprise_call
+-- ----------------------------
+BEGIN;
+INSERT INTO `enterprise_call` VALUES (1, '2020-02-06 19:42:13', b'0', '2020-02-06 19:42:13', 'a7deba7c-355f-4874-8d22-da5cd1732960', NULL, 'zhang', '1000', '口罩', '腾讯', '1121212');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for enterprise_call_photos
+-- ----------------------------
+DROP TABLE IF EXISTS `enterprise_call_photos`;
+CREATE TABLE `enterprise_call_photos` (
+  `enterprise_call_id` bigint(20) NOT NULL,
+  `photos` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  KEY `FK6vxqpdtn0igohlvqjdd950r6c` (`enterprise_call_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of enterprise_call_photos
+-- ----------------------------
+BEGIN;
+INSERT INTO `enterprise_call_photos` VALUES (1, 'http://a');
+INSERT INTO `enterprise_call_photos` VALUES (1, 'http://b');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for enterprise_call_record
+-- ----------------------------
+DROP TABLE IF EXISTS `enterprise_call_record`;
+CREATE TABLE `enterprise_call_record` (
+  `id` bigint(20) NOT NULL,
+  `create_date` datetime DEFAULT NULL,
+  `deleted` bit(1) DEFAULT NULL,
+  `update_date` datetime DEFAULT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `version` bigint(20) DEFAULT NULL,
+  `comment` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `call_id` bigint(20) NOT NULL,
+  `operator_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK2jak3ntn1icu9ivycttw2tpdy` (`call_id`),
+  KEY `FKr5qkgns2vghhw16ds2bpmsatu` (`operator_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of enterprise_call_record
+-- ----------------------------
+BEGIN;
+INSERT INTO `enterprise_call_record` VALUES (3, '2020-02-06 19:43:18', b'0', '2020-02-06 19:43:18', '1c851b86-4dbd-4a58-8818-f201fe69ce07', NULL, '已处理', 1, 1);
 COMMIT;
 
 -- ----------------------------
@@ -283,6 +353,75 @@ CREATE TABLE `hospital` (
 BEGIN;
 INSERT INTO `hospital` VALUES (1, '2020-02-04 12:14:07', b'0', '2020-02-04 12:24:28', NULL, NULL, '北京市东城区帅府园一号', 52, '刘大夫', '北京协和医院是北京协和医学院的临床学院。中国医学科学院的临床医学研究所,是卫生部指定的全国疑难重症诊治指导中心之一。', '13800000333', '北京协和医院东院', 'https://bkimg.cdn.bcebos.com/pic/0824ab18972bd4077b2d634675899e510eb309a6?x-bce-process=image/watermark,g_7,image_d2F0ZXIvYmFpa2UyMjA=,xp_5,yp_5', 2, 500, '北京协和医院是一所位于北京市东城区，集医疗、科研、教学为一体的大型综合医院。它隶属于中国协和医科大学(2006年改为北京协和医学院/清华大学医学部)，是其临床医学院，同时也是中国医学科学院的临床医学研究所，中华人民共和国卫生部指定的诊治疑难重症的技术指导中心。');
 INSERT INTO `hospital` VALUES (52, '2020-02-04 15:44:11', b'0', '2020-02-04 15:44:11', 'bea0ada4-6e76-49f6-9ff6-3beb51be04e9', NULL, '北京市西城区二龙路', 52, '刘大夫', '北京协和医院是北京协和医学院的临床学院。中国医学科学院的临床医学研究所,是卫生部指定的全国疑难重症诊治指导中心之一。', '13800000000', '北京协和医院西院', 'https://bkimg.cdn.bcebos.com/pic/0824ab18972bd4077b2d634675899e510eb309a6?x-bce-process=image/watermark,g_7,image_d2F0ZXIvYmFpa2UyMjA=,xp_5,yp_5', 2, 501, '北京协和医院是一所位于北京市东城区，集医疗、科研、教学为一体的大型综合医院。它隶属于中国协和医科大学(2006年改为北京协和医学院/清华大学医学部)，是其临床医学院，同时也是中国医学科学院的临床医学研究所，中华人民共和国卫生部指定的诊治疑难重症的技术指导中心。');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for hospital_needs
+-- ----------------------------
+DROP TABLE IF EXISTS `hospital_needs`;
+CREATE TABLE `hospital_needs` (
+  `id` bigint(20) NOT NULL,
+  `create_date` datetime DEFAULT NULL,
+  `deleted` bit(1) DEFAULT NULL,
+  `update_date` datetime DEFAULT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `version` bigint(20) DEFAULT NULL,
+  `contact_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `hospital_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `contact_method` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `article_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of hospital_needs
+-- ----------------------------
+BEGIN;
+INSERT INTO `hospital_needs` VALUES (1, '2020-02-06 19:41:24', b'0', '2020-02-06 19:41:24', 'dce0529f-32d1-4df6-aeb2-e0d2f69d9b3a', NULL, 'zhang', '武汉协和', '1121212', '口罩');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for hospital_needs_call_photos
+-- ----------------------------
+DROP TABLE IF EXISTS `hospital_needs_call_photos`;
+CREATE TABLE `hospital_needs_call_photos` (
+  `hospital_needs_call_id` bigint(20) NOT NULL,
+  `photos` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  KEY `FK9mw7wj4u14fmus4xgcfaradgy` (`hospital_needs_call_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of hospital_needs_call_photos
+-- ----------------------------
+BEGIN;
+INSERT INTO `hospital_needs_call_photos` VALUES (1, 'http://a');
+INSERT INTO `hospital_needs_call_photos` VALUES (1, 'http://b');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for hospital_needs_call_record
+-- ----------------------------
+DROP TABLE IF EXISTS `hospital_needs_call_record`;
+CREATE TABLE `hospital_needs_call_record` (
+  `id` bigint(20) NOT NULL,
+  `create_date` datetime DEFAULT NULL,
+  `deleted` bit(1) DEFAULT NULL,
+  `update_date` datetime DEFAULT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `version` bigint(20) DEFAULT NULL,
+  `comment` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `call_id` bigint(20) NOT NULL,
+  `operator_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKjtuji92jvlgxgag2njcd5pub7` (`call_id`),
+  KEY `FKakxggu5l6qsrj50dt0sv18wma` (`operator_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of hospital_needs_call_record
+-- ----------------------------
+BEGIN;
+INSERT INTO `hospital_needs_call_record` VALUES (2, '2020-02-06 19:42:37', b'0', '2020-02-06 19:42:37', 'b7aec5e1-7934-4e4e-bf46-2cb9fe81b1ee', NULL, '已处理', 1, 1);
 COMMIT;
 
 -- ----------------------------
@@ -564,6 +703,25 @@ BEGIN;
 INSERT INTO `product_source_call_photos` VALUES (1, 'http://a');
 INSERT INTO `product_source_call_photos` VALUES (1, 'http://b');
 COMMIT;
+
+-- ----------------------------
+-- Table structure for product_source_call_record
+-- ----------------------------
+DROP TABLE IF EXISTS `product_source_call_record`;
+CREATE TABLE `product_source_call_record` (
+  `id` bigint(20) NOT NULL,
+  `create_date` datetime DEFAULT NULL,
+  `deleted` bit(1) DEFAULT NULL,
+  `update_date` datetime DEFAULT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `version` bigint(20) DEFAULT NULL,
+  `comment` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `call_id` bigint(20) NOT NULL,
+  `operator_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKf4fs2s7h2oc5jn3gcnvgl3wu4` (`call_id`),
+  KEY `FKj3d6ur8v84w3cbe6o1pdli23g` (`operator_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Table structure for purchase
@@ -4132,7 +4290,7 @@ CREATE TABLE `seq_call_record` (
 -- Records of seq_call_record
 -- ----------------------------
 BEGIN;
-INSERT INTO `seq_call_record` VALUES (2);
+INSERT INTO `seq_call_record` VALUES (4);
 COMMIT;
 
 -- ----------------------------
@@ -4163,6 +4321,21 @@ CREATE TABLE `seq_donation` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `seq_donation` VALUES (1);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for seq_enterprise_call
+-- ----------------------------
+DROP TABLE IF EXISTS `seq_enterprise_call`;
+CREATE TABLE `seq_enterprise_call` (
+  `next_val` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of seq_enterprise_call
+-- ----------------------------
+BEGIN;
+INSERT INTO `seq_enterprise_call` VALUES (2);
 COMMIT;
 
 -- ----------------------------
@@ -4208,6 +4381,21 @@ CREATE TABLE `seq_hospital` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `seq_hospital` VALUES (151);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for seq_hospital_needs
+-- ----------------------------
+DROP TABLE IF EXISTS `seq_hospital_needs`;
+CREATE TABLE `seq_hospital_needs` (
+  `next_val` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of seq_hospital_needs
+-- ----------------------------
+BEGIN;
+INSERT INTO `seq_hospital_needs` VALUES (2);
 COMMIT;
 
 -- ----------------------------

@@ -1,9 +1,9 @@
 package com.randeng.api.service;
 
-import com.randeng.api.model.HospitalNeeds;
+import com.randeng.api.model.HospitalNeedsCall;
 
 /**
  * This interface defines the fundraising service.
  */
-public interface HospitalNeedService extends BaseService<HospitalNeeds, Long> {
+public interface HospitalNeedService extends BaseService<HospitalNeedsCall, Long> {
 }

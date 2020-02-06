@@ -5,21 +5,21 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "product_source_call_record")
+@Table(name = "enterprise_call_record")
 @SequenceGenerator(name = "sequenceGenerator", sequenceName = "seq_call_record", allocationSize = 1)
-public class ProductSourceCallRecord extends BaseEntity<Long> {
+public class EnterpriseCallRecord extends BaseEntity<Long> {
     private User operator;
     private String comment;
-    private ProductSourceCall call;
+    private EnterpriseCall call;
 
     @ManyToOne
     @JoinColumn(name="call_id", nullable = false)
     @JsonIgnore
-    public ProductSourceCall getCall() {
+    public EnterpriseCall getCall() {
         return call;
     }
 
-    public void setCall(ProductSourceCall call) {
+    public void setCall(EnterpriseCall call) {
         this.call = call;
     }
 

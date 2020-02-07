@@ -5,6 +5,7 @@ import com.randeng.api.common.Order;
 import com.randeng.api.common.Pageable;
 import com.randeng.api.controller.common.BaseController;
 import com.randeng.api.controller.common.WebResponse;
+import com.randeng.api.controller.dto.UserDonationStatsResponse;
 import com.randeng.api.model.Donation;
 import com.randeng.api.model.Fundraising;
 import com.randeng.api.model.User;
@@ -78,5 +79,17 @@ public class DonationController extends BaseController {
         donation.setComment(request.getComment());
         donationService.update(donation);
         return ResponseEntity.ok(WebResponse.success());
+    }
+
+    @RequestMapping(value = "mine", method = RequestMethod.GET)
+    public @ResponseBody
+    ResponseEntity<?> userDonation() {
+        User self = currentUser();
+        long userDonationCount = donationService.count(Filter.eq("user", self));
+
+        UserDonationStatsResponse response = new UserDonationStatsResponse();
+        response.setCount(userDonationCount);
+        response.setAmount(self.getDonationAmount());
+        return ResponseEntity.ok(WebResponse.success(response));
     }
 }

@@ -34,7 +34,7 @@ CREATE TABLE `call_record` (
   PRIMARY KEY (`id`),
   KEY `FK32ioxaobvl1c5n4o48xxa1b3h` (`call_id`),
   KEY `FKc0n0f6s25k6sqn83nqa3mfg8h` (`operator_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of call_record
@@ -56,7 +56,7 @@ CREATE TABLE `category` (
   `version` bigint(20) DEFAULT NULL,
   `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of category
@@ -80,7 +80,7 @@ CREATE TABLE `district` (
   `district` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `pid` bigint(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Table structure for donation
@@ -101,7 +101,7 @@ CREATE TABLE `donation` (
   PRIMARY KEY (`id`),
   KEY `FK1ucrqfsad7tj1ut2txt6ey2af` (`fundraising_id`),
   KEY `FK2rx4oikd7rs8ddja8k9xc25my` (`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of donation
@@ -129,7 +129,7 @@ CREATE TABLE `enterprise_call` (
   `enterprise_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `mobile` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of enterprise_call
@@ -146,7 +146,7 @@ CREATE TABLE `enterprise_call_photos` (
   `enterprise_call_id` bigint(20) NOT NULL,
   `photos` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   KEY `FK6vxqpdtn0igohlvqjdd950r6c` (`enterprise_call_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of enterprise_call_photos
@@ -173,7 +173,7 @@ CREATE TABLE `enterprise_call_record` (
   PRIMARY KEY (`id`),
   KEY `FK2jak3ntn1icu9ivycttw2tpdy` (`call_id`),
   KEY `FKr5qkgns2vghhw16ds2bpmsatu` (`operator_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of enterprise_call_record
@@ -201,7 +201,7 @@ CREATE TABLE `expense` (
   `fundraising_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK6uxidtvx80x4mrprknx1wrd9` (`fundraising_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of expense
@@ -220,7 +220,7 @@ CREATE TABLE `expense_photos` (
   `expense_id` bigint(20) NOT NULL,
   `photos` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   KEY `FKmv4ofo3ng13x7dxyoekdgd39e` (`expense_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of expense_photos
@@ -261,7 +261,7 @@ CREATE TABLE `fundraising` (
   PRIMARY KEY (`id`),
   KEY `FKjftsquj4yw17nqwa33to5oejp` (`category_id`),
   KEY `FK4xjiib6rnxc58poeyn33y8pqv` (`inventory_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of fundraising
@@ -278,7 +278,7 @@ CREATE TABLE `fundraising_certificate_photos` (
   `fundraising_id` bigint(20) NOT NULL,
   `certificate_photos` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   KEY `FK8nhmigjmjycrxlv28x0kgcjld` (`fundraising_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of fundraising_certificate_photos
@@ -297,7 +297,7 @@ CREATE TABLE `fundraising_hospital` (
   `hospital_id` bigint(20) NOT NULL,
   KEY `FKlqcow9q7f3ut63gsxgkb7ot4q` (`hospital_id`),
   KEY `FKcvywnbg0582b086fysabq0aat` (`fundraising_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of fundraising_hospital
@@ -314,7 +314,7 @@ CREATE TABLE `fundraising_product_photos` (
   `fundraising_id` bigint(20) NOT NULL,
   `product_photos` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   KEY `FKb8i5a3dibc6xja9d3v6wujla2` (`fundraising_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of fundraising_product_photos
@@ -345,7 +345,7 @@ CREATE TABLE `hospital` (
   `region_id` bigint(20) NOT NULL,
   `story` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of hospital
@@ -371,7 +371,7 @@ CREATE TABLE `hospital_needs` (
   `contact_method` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `article_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of hospital_needs
@@ -388,7 +388,7 @@ CREATE TABLE `hospital_needs_call_photos` (
   `hospital_needs_call_id` bigint(20) NOT NULL,
   `photos` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   KEY `FK9mw7wj4u14fmus4xgcfaradgy` (`hospital_needs_call_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of hospital_needs_call_photos
@@ -415,7 +415,7 @@ CREATE TABLE `hospital_needs_call_record` (
   PRIMARY KEY (`id`),
   KEY `FKjtuji92jvlgxgag2njcd5pub7` (`call_id`),
   KEY `FKakxggu5l6qsrj50dt0sv18wma` (`operator_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of hospital_needs_call_record
@@ -445,7 +445,7 @@ CREATE TABLE `income` (
   `operator_id` bigint(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FKfvt2ell3djtu3rk2kykf9rkau` (`fundraising_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of income
@@ -464,7 +464,7 @@ CREATE TABLE `income_photos` (
   `income_id` bigint(20) NOT NULL,
   `photos` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   KEY `FK2farhr2w3t5t5rd9thh0id8dl` (`income_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of income_photos
@@ -491,7 +491,7 @@ CREATE TABLE `inventory` (
   `version` bigint(20) DEFAULT NULL,
   `inventory_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of inventory
@@ -508,7 +508,7 @@ CREATE TABLE `inventory_field_photos` (
   `inventory_id` bigint(20) NOT NULL,
   `field_photos` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   KEY `FK5opvwvctacfcx860l6s0a8129` (`inventory_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of inventory_field_photos
@@ -543,7 +543,7 @@ CREATE TABLE `logistic` (
   PRIMARY KEY (`id`),
   KEY `FKbgke4lmf8yehwxb936bvikkmu` (`fundraising_id`),
   KEY `FKek0v6u8kq79lad29u3ruohdvs` (`hospital_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of logistic
@@ -562,7 +562,7 @@ CREATE TABLE `logistic_delivery_photos` (
   `logistic_id` bigint(20) NOT NULL,
   `delivery_photos` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   KEY `FKo4rttngjg86dg1gqbsaksllca` (`logistic_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of logistic_delivery_photos
@@ -580,7 +580,7 @@ CREATE TABLE `logistic_distributor_field_photos` (
   `logistic_id` bigint(20) NOT NULL,
   `distributor_field_photos` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   KEY `FKhuxbubsadegdvk4vqy4x7vll3` (`logistic_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of logistic_distributor_field_photos
@@ -598,7 +598,7 @@ CREATE TABLE `logistic_distributor_invoice_photos` (
   `logistic_id` bigint(20) NOT NULL,
   `distributor_invoice_photos` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   KEY `FKghs14xg5vab4rgue7cj8b9w2v` (`logistic_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of logistic_distributor_invoice_photos
@@ -616,7 +616,7 @@ CREATE TABLE `logistic_distributor_transfer_photos` (
   `logistic_id` bigint(20) NOT NULL,
   `distributor_transfer_photos` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   KEY `FKiar6nx4ylwrty7t019cain2qe` (`logistic_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of logistic_distributor_transfer_photos
@@ -634,7 +634,7 @@ CREATE TABLE `logistic_volunteer_field_photos` (
   `logistic_id` bigint(20) NOT NULL,
   `volunteer_field_photos` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   KEY `FKuxcb5g4pmb5y8oofm8q2scgv` (`logistic_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of logistic_volunteer_field_photos
@@ -659,7 +659,7 @@ CREATE TABLE `photo` (
   `version` bigint(20) DEFAULT NULL,
   `url` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Table structure for product_source_call
@@ -677,7 +677,7 @@ CREATE TABLE `product_source_call` (
   `product_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `product_spec` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of product_source_call
@@ -694,7 +694,7 @@ CREATE TABLE `product_source_call_photos` (
   `product_source_call_id` bigint(20) NOT NULL,
   `photos` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   KEY `FKe7uc4fhjjacike7uxr8flcown` (`product_source_call_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of product_source_call_photos
@@ -721,7 +721,7 @@ CREATE TABLE `product_source_call_record` (
   PRIMARY KEY (`id`),
   KEY `FKf4fs2s7h2oc5jn3gcnvgl3wu4` (`call_id`),
   KEY `FKj3d6ur8v84w3cbe6o1pdli23g` (`operator_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Table structure for purchase
@@ -739,7 +739,7 @@ CREATE TABLE `purchase` (
   `purchaser` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of purchase
@@ -756,7 +756,7 @@ CREATE TABLE `purchase_field_photos` (
   `purchase_id` bigint(20) NOT NULL,
   `field_photos` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   KEY `FK3g6vc1rxkn3xxroqrd1whci3g` (`purchase_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of purchase_field_photos
@@ -775,7 +775,7 @@ CREATE TABLE `purchase_fundraising` (
   `fundraising_id` bigint(20) NOT NULL,
   UNIQUE KEY `UK_p58suaw35721leh7aiswsmi8i` (`fundraising_id`),
   KEY `FKayei3ij8yhl703gcagnv4mnug` (`purchase_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of purchase_fundraising
@@ -792,7 +792,7 @@ CREATE TABLE `purchase_invoice_photos` (
   `purchase_id` bigint(20) NOT NULL,
   `invoice_photos` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   KEY `FKbiwkjkudm547d8321qq41ahfg` (`purchase_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of purchase_invoice_photos
@@ -810,7 +810,7 @@ CREATE TABLE `purchase_transfer_photos` (
   `purchase_id` bigint(20) NOT NULL,
   `transfer_photos` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   KEY `FKcrpbfgoep2teb4viufjfb3yg8` (`purchase_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of purchase_transfer_photos
@@ -836,7 +836,7 @@ CREATE TABLE `rc_district` (
   PRIMARY KEY (`id`),
   KEY `parent_id` (`pid`),
   KEY `region_type` (`level`)
-) ENGINE=MyISAM AUTO_INCREMENT=3432 DEFAULT CHARSET=utf8 COMMENT='地区表';
+) ENGINE=INNODB AUTO_INCREMENT=3432 DEFAULT CHARSET=utf8 COMMENT='地区表';
 
 -- ----------------------------
 -- Records of rc_district
@@ -4267,7 +4267,7 @@ CREATE TABLE `role` (
   `description` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of role
@@ -4284,7 +4284,7 @@ COMMIT;
 DROP TABLE IF EXISTS `seq_call_record`;
 CREATE TABLE `seq_call_record` (
   `next_val` bigint(20) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of seq_call_record
@@ -4299,7 +4299,7 @@ COMMIT;
 DROP TABLE IF EXISTS `seq_category`;
 CREATE TABLE `seq_category` (
   `next_val` bigint(20) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of seq_category
@@ -4314,7 +4314,7 @@ COMMIT;
 DROP TABLE IF EXISTS `seq_donation`;
 CREATE TABLE `seq_donation` (
   `next_val` bigint(20) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of seq_donation
@@ -4329,7 +4329,7 @@ COMMIT;
 DROP TABLE IF EXISTS `seq_enterprise_call`;
 CREATE TABLE `seq_enterprise_call` (
   `next_val` bigint(20) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of seq_enterprise_call
@@ -4344,7 +4344,7 @@ COMMIT;
 DROP TABLE IF EXISTS `seq_expense`;
 CREATE TABLE `seq_expense` (
   `next_val` bigint(20) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of seq_expense
@@ -4359,7 +4359,7 @@ COMMIT;
 DROP TABLE IF EXISTS `seq_fundraising`;
 CREATE TABLE `seq_fundraising` (
   `next_val` bigint(20) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of seq_fundraising
@@ -4374,7 +4374,7 @@ COMMIT;
 DROP TABLE IF EXISTS `seq_hospital`;
 CREATE TABLE `seq_hospital` (
   `next_val` bigint(20) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of seq_hospital
@@ -4389,7 +4389,7 @@ COMMIT;
 DROP TABLE IF EXISTS `seq_hospital_needs`;
 CREATE TABLE `seq_hospital_needs` (
   `next_val` bigint(20) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of seq_hospital_needs
@@ -4404,7 +4404,7 @@ COMMIT;
 DROP TABLE IF EXISTS `seq_income`;
 CREATE TABLE `seq_income` (
   `next_val` bigint(20) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of seq_income
@@ -4419,7 +4419,7 @@ COMMIT;
 DROP TABLE IF EXISTS `seq_inventory`;
 CREATE TABLE `seq_inventory` (
   `next_val` bigint(20) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of seq_inventory
@@ -4434,7 +4434,7 @@ COMMIT;
 DROP TABLE IF EXISTS `seq_logistic`;
 CREATE TABLE `seq_logistic` (
   `next_val` bigint(20) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of seq_logistic
@@ -4449,7 +4449,7 @@ COMMIT;
 DROP TABLE IF EXISTS `seq_photo`;
 CREATE TABLE `seq_photo` (
   `next_val` bigint(20) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of seq_photo
@@ -4464,7 +4464,7 @@ COMMIT;
 DROP TABLE IF EXISTS `seq_product_source_call`;
 CREATE TABLE `seq_product_source_call` (
   `next_val` bigint(20) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of seq_product_source_call
@@ -4479,7 +4479,7 @@ COMMIT;
 DROP TABLE IF EXISTS `seq_purchase`;
 CREATE TABLE `seq_purchase` (
   `next_val` bigint(20) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of seq_purchase
@@ -4535,7 +4535,7 @@ CREATE TABLE `user` (
   `mobile` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `donation_amount` decimal(19,2) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of user
@@ -4555,7 +4555,7 @@ CREATE TABLE `user_role` (
   `role_id` bigint(20) NOT NULL,
   KEY `FKa68196081fvovjhkek5m97n3y` (`role_id`),
   KEY `FK859n2jvi8ivhui0rl0esws6o` (`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of user_role
